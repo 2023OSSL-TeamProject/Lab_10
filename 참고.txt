@@ -1,0 +1,10 @@
+makefile (김광일 사용 예시)
+
+vaccine : main.c ./inc/ossCRUD.o ./inc/otherFunc.o
+	gcc main.c -o vaccine ./inc/ossCRUD.o ./inc/otherFunc.o -I./inc
+ossCRUD.o : ./inc/ossCRUD.h ./inc/ossCRUD.c
+	gcc -c ./inc/ossCRUD.c -o ./inc/ossCRUD.o
+otherFunc.o : ./inc/otherFunc.h ./inc/otherFunc.c 
+	gcc -c ./inc/otherFunc.c -o ./inc/otherFunc.o
+clean :
+	rm vaccine ./inc/*.o 
