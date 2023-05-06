@@ -1,38 +1,73 @@
 <h1>2023 OSS MiniProject</h1>
+<h2>🧺 H-Washer</h2>
+<img src = "./img/h-washer.png" style = "widht : 100%; height : 400px">
+<br><br>
+<hr>
 
-<h2>프로젝트 주제 및 소개</h2>
-<img src = "./img/washer.jpg" style = "widht : 500px; height : 200px">
-<p>주제 : </p>
-<p>소개 : 한동대학교 각 기숙사 별 위치한 세탁기에 대하여 가상 이용 예약 시스템을 구현한 프로젝트입니다.</p>
+<h2>🧺 H-Washer 주제</h2>
+<p>세탁기 사용 예약 시스템</p>
+<br>
+<hr>
+<h2>🧺 H-Washer 소개</h2>
+<p>
+
+한동대학교 각 기숙사 별 위치한 <b style = "color : #1793D1">세탁기</b>에 대하여 <u>가상 이용 예약 시스템</u>을 구현한 프로젝트입니다.<br>
+사용자는 기숙사, 층, 세탁기 종류에 따라서 <u>사용 예약</u>을 진행할 수 있으며, <u>예약 현황도 확인</u>할 수 있습니다.<br>
+추가적으로 세탁카드(코인), 세제 및 섬유유연제 개수 등에 대한 정보를 갖고 있으며, 구매하는 기능까지 구현했습니다.
+
+</p>
 <br>
 <hr>
 
-<h2>참여자</h2>
+
+
+<h2>🧺 H-Washer의 간략한 기능 설명</h2>
+<ol>
+    <li>세탁 내용 조회
+    : 원하는 기숙사와 층별 세탁기의 예약 현황을 조회할 수 있다.</li>
+    <li>세탁 내용 등록
+    : 원하는 기숙사와 층별 세탁기에 예약을 진행할 수 있다.</li>
+    <li>세탁 내용 수정
+    : 자신이 예약한 예약 내용을 수정할 수 있다.</li>
+    <li>세탁 내용 삭제
+    : 자신이 예약한 예약 내용을 삭제할 수 있다.</li>
+    <li>세탁 내용 검색
+    : 전체 예약 중 이름으로 예약 내용을 조회할 수 있다.</li>
+    <li>파일 저장
+    : 예약되어 있는 전체 예약 내용을 저장한다.</li>
+    <li>유저 정보 수정하기
+    : 자신의 정보를 수정할 수 있다.</li>
+    <li>세탁 SHOP
+    : 빨래 카드 충전, 세제 및 섬유유연제를 구매할 수 있다.</li>
+</ol>
+<br>
+<hr>
+
+<h2>🧺 개발환경 및 언어</h2>
+
+![C](https://img.shields.io/badge/-C_programming-0054FF?style=for-the-badge&logo=C&logoColor=white)
+![VSCODE](https://img.shields.io/badge/-VSCODE-00E4eF?style=for-the-badge&logo=V&logoColor=white)
+![MAC](https://img.shields.io/badge/-MAC_BOOK-gray?style=for-the-badge&logo=apple&logoColor=white)
+![Github](https://img.shields.io/badge/-Github-black?style=for-the-badge&logo=github&logoColor=white)
+![Linux](https://img.shields.io/badge/-Linux-FCC624?style=for-the-badge&logo=Linux&logoColor=black)
+
+<br>
+<hr>
+
+<h2>🧺 Team Member</h2>
 <table style = "border : 1 solid while; text-align : center; background-color : gray">
 <tr>
-    <td><img src = "./img/kimdongkyu.png" style = "width : 300px; height : 300px"></td>
     <td><img src = "./img/kimkwangil.jpg" style = "width : 300px; height : 300px"></td>
+    <td><img src = "./img/kimdongkyu.png" style = "width : 300px; height : 300px"></td>
 </tr>
 <tr>
-    <td>김광일</td>
-    <td>김동규</td>
+    <td><b>👥 김광일 👥</b></td>
+    <td><b>👥 김동규 👥</b></td>
 </tr>
 <tr>
-    <td>README.md 제작<br>CRUD / 파일IO<br>ddd<br>역할4</td>
-    <td>github WIKI page 제작<br>기능1~3<br>역할3<br>역할4</td>
+    <td>Owner<br>EADME.md 제작<br>CRUD / 파일IO 구현<br>코드 관리(수정)<br>github 관리</td>
+    <td>Owner<br>github WIKI page 제작<br>부가 기능 구현<br>코드 관리(수정)<br> 프로젝트 관리</td>
 </tr>
 </table>
 <br>
-<hr>
 
-<h2>개발환경 및 언어</h2>
-<br>
-<hr>
-
-<h2>기능 설명</h2>
-<br>
-<hr>
-
-<h2></h2>
-<br>
-<hr>
