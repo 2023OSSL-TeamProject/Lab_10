@@ -19,8 +19,6 @@
 <br>
 <hr>
 
-
-
 <h2>🧺 H-Washer의 간략한 기능 설명</h2>
 <ol>
     <li>세탁 내용 조회
@@ -55,19 +53,18 @@
 <hr>
 
 <h2>🧺 Team Member</h2>
-<table style = "border : 1 solid while; text-align : center; background-color : gray">
+<table style = "border : 1 solid while; text-align : center; background-color : gray; width : 80vw">
 <tr>
-    <td><img src = "./img/kimkwangil.jpg" style = "width : 300px; height : 300px"></td>
-    <td><img src = "./img/kimdongkyu.png" style = "width : 300px; height : 300px"></td>
+    <td><img src = "./img/kimkwangil.jpg" style = "width : 50vw; height : 100%"></td>
+    <td><img src = "./img/kimdongkyu.png" style = "width : 50vw; height : 100%"></td>
 </tr>
 <tr>
-    <td><b>👥 김광일 👥</b></td>
-    <td><b>👥 김동규 👥</b></td>
+    <td style = "width : 50vw; height : 100%"><b>👥 김광일 👥</b></td>
+    <td style = "width : 50vw; height : 100%"><b>👥 김동규 👥</b></td>
 </tr>
 <tr>
-    <td>Owner<br>EADME.md 제작<br>CRUD / 파일IO 구현<br>코드 관리(수정)<br>github 관리</td>
-    <td>Owner<br>github WIKI page 제작<br>부가 기능 구현<br>코드 관리(수정)<br> 프로젝트 관리</td>
+    <td style = "width : 50vw; height : 100%">Owner<br>EADME.md 제작<br>CRUD / 파일IO 구현<br>코드 관리(수정)<br>github 관리</td>
+    <td style = "width : 50vw; height : 100%">Owner<br>github WIKI page 제작<br>부가 기능 구현<br>코드 관리(수정)<br> 프로젝트 관리</td>
 </tr>
 </table>
 <br>
-
