@@ -1,6 +1,6 @@
 <h1>2023 OSS MiniProject</h1>
 <h2>🧺 H-Washer</h2>
-<img src = "./img/h-washer.png" style = "widht : 100%; height : 400px">
+<img src = "./img/h-washer.png" style = "widht : 80vw">
 <br><br>
 <hr>
 
