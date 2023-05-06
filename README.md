@@ -55,8 +55,8 @@
 <h2>🧺 Team Member</h2>
 <table style = "border : 1 solid while; text-align : center; background-color : gray; width : 80vw">
 <tr>
-    <td><img src = "./img/kimkwangil.jpg" style = "width : 50vw; height : 100%"></td>
-    <td><img src = "./img/kimdongkyu.png" style = "width : 50vw; height : 100%"></td>
+    <td><img src = "./img/kimkwangil.jpg" style = "width : 50vw;"></td>
+    <td><img src = "./img/kimdongkyu.png" style = "width : 50vw;"></td>
 </tr>
 <tr>
     <td style = "width : 50vw; "><b>👥 김광일 👥</b></td>
