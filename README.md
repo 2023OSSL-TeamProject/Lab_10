@@ -1,6 +1,7 @@
 <h1>2023 OSS MiniProject</h1>
 
 <h2>프로젝트 주제 및 소개</h2>
+<img src = "./img/washer.jpg" style = "widht : 500px; height : 200px">
 <p>주제 : </p>
 <p>소개 : 한동대학교 각 기숙사 별 위치한 세탁기에 대하여 가상 이용 예약 시스템을 구현한 프로젝트입니다.</p>
 <br>
