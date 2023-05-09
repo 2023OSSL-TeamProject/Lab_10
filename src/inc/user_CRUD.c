@@ -26,7 +26,27 @@ void Insert(List *list) {// list에서 노드 추가 / 학번, 이름 input 받�
     list->link = tp; // 더미노드가 새로운 노드를 가리키게 한다
 }
 void Delete(List *list) { // list에서 노드 삭제 
-    
+    List *cur = list->link; // 더미노드를 가리킨다
+    List *temp = list; // head를 가리킨다
+    int num; // 학번 입력받을 숫자
+
+    printf("삭제하고자 하는 학생의 학번을 입력하시오 > ");
+    scanf("%d", &num);
+
+    while(cur) {
+        if(cur->user.studentNum == num) { // 원하는 학생을 찾은 경우
+            temp->link = cur->link;
+            free(cur);
+            printf("%d 학번의 학생의 정보를 삭제하였습니다\n", num);
+            return;
+        }
+        else { // 원하는 학생이 아닌 경우
+            temp = cur;
+            cur = cur->link; // 다음 노드로 이동
+        }
+
+        printf("%d 학번의 학생이 사용자 정보에 등록되어 있지 않습니다\n", num);
+    }
 }
 void Print(List *list); // list print
 void IsEmpty(List *list); // list가 비어있는지 확인
