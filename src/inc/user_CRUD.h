@@ -12,6 +12,7 @@ typedef struct _list {
     List *link; // list를 가리키는 링크
 } List;
 
+void ListInit(List *list); // list의 초기화를 담당한다
 void Insert(List *list); // list에서 노드 추가
 void Delete(List *list); // list에서 노드 삭제
 void Print(List *list); // list print
