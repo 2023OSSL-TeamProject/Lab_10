@@ -6,6 +6,7 @@
 void ListInit(List *list) { // list의 초기화에 해당하는 부분
     List *tp = malloc(sizeof(List));
     tp->link = NULL; // tp라는 이름의 더미노드 하나 생성
+    tp->user.studentNum = 0; // 학번 0으로 초기화
     
     list->link = tp;
 }
@@ -48,5 +49,24 @@ void Delete(List *list) { // list에서 노드 삭제
         printf("%d 학번의 학생이 사용자 정보에 등록되어 있지 않습니다\n", num);
     }
 }
-void Print(List *list); // list print
-void IsEmpty(List *list); // list가 비어있는지 확인
+void Print(List *list) { // list의 모든 user에 대한 내용 print
+    List *cur = list->link;
+
+    while(cur) {
+        printf("학번 : %d 이름 : %s\n", cur->user.studentNum, cur->user.name);
+        
+        cur = cur->link;
+    }
+}
+void IsEmpty(List *list) { // list가 비어있는지 여부 확인
+    
+    List *cur = list->link;
+    
+    while(cur->link) {
+        cur = cur->link;
+    }
+
+    if(cur->user.studentNum == 0) { // 마지막 노드의 학번이 0인 경우
+        printf("List가 비어있습니다.\n");
+    }
+}
