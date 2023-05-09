@@ -6,15 +6,15 @@ int choice_menu()
 
     int menu = 0;
     printf("<< 시스템 이름 >>\n");
-    printf("[1] 조회\n");
-    printf("[2] 추가\n");
-    printf("[3] 수정\n");
-    printf("[4] 취소\n");
-    printf("[5] 조회(특정 값)\n");
-    printf("[6] 기능 (1)\n");
-    printf("[7] 기능 (2)\n");
-    printf("[8] 기능 (3)\n");
-    printf("[9] 기능 (4)\n");
+    printf("[1] 사용자 정보 조회\n");
+    printf("[2] 사용자 추가\n");
+    printf("[3] 사용자 수정\n");
+    printf("[4] 사용자 삭제\n");
+    printf("[5] 조회(특정 값)\n"); //?
+    printf("[6] 세탁기 정보 조회\n");
+    printf("[7] 세탁기 예약\n");
+    printf("[8] 세탁기 예약 취소\n");
+    printf("[9] shop\n");
     printf("[10] 기능 (5)\n");
     printf("[0] 프로그램 종료\n");
 
