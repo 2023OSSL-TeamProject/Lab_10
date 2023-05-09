@@ -15,9 +15,9 @@ void Insert(List *list) {// list에서 노드 추가 / 학번, 이름 input 받�
     List *tp = malloc(sizeof(List));
 
     tp->user.money = 0;
-    printf("사용자의 학번을 입력하시오 > ");
+    printf("사용자의 학번을 입력하세요 > ");
     scanf("%d", &tp->user.studentNum);
-    printf("사용자의 이름을 입력하시오 > ");
+    printf("사용자의 이름을 입력하세요 > ");
     scanf("%s", tp->user.name);
 
     // Argument로 들어오는 list는 이 linked list의 head에 해당
@@ -31,7 +31,7 @@ void Delete(List *list) { // list에서 노드 삭제
     List *temp = list; // head를 가리킨다
     int num; // 학번 입력받을 숫자
 
-    printf("삭제하고자 하는 학생의 학번을 입력하시오 > ");
+    printf("삭제하고자 하는 학생의 학번을 입력하세요 > ");
     scanf("%d", &num);
 
     while(cur) {
@@ -69,4 +69,26 @@ void IsEmpty(List *list) { // list가 비어있는지 여부 확인
     if(cur->user.studentNum == 0) { // 마지막 노드의 학번이 0인 경우
         printf("List가 비어있습니다.\n");
     }
+}
+
+void Update(List *list) { // user에 대한 정보 수정
+    int num;
+    List *cur = list->link;
+
+    printf("정보를 수정하고자 하는 학생의 학번을 입력하세요 > ");
+    scanf("%d", num);
+
+    while(cur) {
+        if(cur->user.studentNum == num) { // 찾고자 하는 학생과 이름이 동일할 경우
+            printf("수정하고자 하는 학번을 입력하세요 > ");
+            scanf("%d", &cur->user.studentNum);
+
+            printf("수정하고자 하는 이름을 입력하세요 > ");
+            scanf("%s", cur->user.name);
+
+            return;
+        }
+    }
+
+    printf("%d 학번의 학생은 존재하지 않습니다.\n", num);
 }
