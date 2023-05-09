@@ -18,3 +18,4 @@ void Delete(List *list); // list에서 노드 삭제
 void Print(List *list); // list print
 void IsEmpty(List *list); // list가 비어있는지 확인
 void Update(List *list); // user에 대한 정보 수정
+int Find(List *list, int num); // 원하는 user 탐색

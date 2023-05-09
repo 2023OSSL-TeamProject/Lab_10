@@ -12,19 +12,32 @@ void ListInit(List *list) { // list의 초기화에 해당하는 부분
 }
 
 void Insert(List *list) {// list에서 노드 추가 / 학번, 이름 input 받아야 한다 / 돈이랑 사용하는 세탁기는 나중에 다른 함수로 따로 구현
-    List *tp = malloc(sizeof(List));
+    int check, num;
 
-    tp->user.money = 0;
     printf("사용자의 학번을 입력하세요 > ");
-    scanf("%d", &tp->user.studentNum);
-    printf("사용자의 이름을 입력하세요 > ");
-    scanf("%s", tp->user.name);
+    scanf("%d", &num);
 
-    // Argument로 들어오는 list는 이 linked list의 head에 해당
-    // 따라서 head가 가리키는 더미노드 뒤에 위치하게 하는 것이 합당
+    check = Find(list, num);
 
-    tp->link = list->link->link; // 더미노드가 가리키는 노드를 의미
-    list->link = tp; // 더미노드가 새로운 노드를 가리키게 한다
+    if(check == 1) {
+        printf("이미 존재하는 사용자입니다. \n");
+        return;
+    }
+    else {
+        List *tp = malloc(sizeof(List));
+
+        tp->user.money = 0;
+        
+        tp->user.studentNum = num; // 학번 입력
+        printf("사용자의 이름을 입력하세요 > ");
+        scanf("%s", tp->user.name);
+
+        // Argument로 들어오는 list는 이 linked list의 head에 해당
+        // 따라서 head가 가리키는 더미노드 뒤에 위치하게 하는 것이 합당
+
+        tp->link = list->link->link; // 더미노드가 가리키는 노드를 의미
+        list->link = tp; // 더미노드가 새로운 노드를 가리키게 한다
+    }
 }
 void Delete(List *list) { // list에서 노드 삭제 
     List *cur = list->link; // 더미노드를 가리킨다
@@ -91,4 +104,16 @@ void Update(List *list) { // user에 대한 정보 수정
     }
 
     printf("%d 학번의 학생은 존재하지 않습니다.\n", num);
+}
+
+int Find(List *list, int num) { // 원하는 학생 찾으면 1 return
+
+    List *cur = list->link;
+    while(cur) {
+        if(cur->user.studentNum == num) {
+            printf("학번 : %d 이름 : %s\n", cur->user.studentNum, cur->user.name);
+            return 1;
+        }
+    }
+    return 0;
 }
