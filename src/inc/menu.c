@@ -15,7 +15,6 @@ int choice_menu()
     printf("[7] 세탁기 예약\n");
     printf("[8] 세탁기 예약 취소\n");
     printf("[9] shop\n");
-    printf("[10] 기능 (5)\n");
     printf("[0] 프로그램 종료\n");
 
     printf("==> 메뉴를 선택하세요 : ");
