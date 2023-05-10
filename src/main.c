@@ -8,6 +8,13 @@
 
 int main(void)
 {
+
+    List *head;
+
+    head = malloc(sizeof(List));
+
+    ListInit(head);
+
     system("clear"); // 프로그램 시작 시 terminal 화면을 clear 해준다.
     while (1)
     {
@@ -29,6 +36,7 @@ int main(void)
 
         if (menu == 1)
         {
+
         }
         else if (menu == 2)
         {
