@@ -6,12 +6,13 @@ typedef struct _user
     int money;       // user가 가지고있는 돈
     char name[20];   // user 이름
     char washer[20]; // 사용중인 세탁기 이름,,?
+
 } User;
 
 typedef struct _list
 {
     User user;  // 노드 안에서 user의 데이터를 저장
-    List *link; // list를 가리키는 링크
+    struct _list *link; // list를 가리키는 링크
 } List;
 
 void ListInit(List *list);     // list의 초기화를 담당한다

@@ -1,8 +1,8 @@
 // 이 파일을 프로그램이 구동되는 파일입니다.
 #include <stdio.h>
 #include <stdlib.h>
-#include "user_CRUD.h"
-#include "washer_CRUD.h"
+#include "userCRUD.h"
+#include "washerCRUD.h"
 #include "menu.h"
 #include "otherFunc.h"
 

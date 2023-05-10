@@ -103,7 +103,7 @@ void Update(List *list)
     List *cur = list->link;
 
     printf("정보를 수정하고자 하는 학생의 학번을 입력하세요 > ");
-    scanf("%d", num);
+    scanf("%d", &num);
 
     while (cur)
     {
