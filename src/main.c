@@ -36,7 +36,7 @@ int main(void)
 
         if (menu == 1)
         {
-
+            ListPrint(head);
         }
         else if (menu == 2)
         {

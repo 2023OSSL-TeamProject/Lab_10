@@ -12,7 +12,7 @@ void ListInit(List *list)
     list->link = tp;
 }
 
-void Insert(List *list)
+void ListInsert(List *list)
 { // list에서 노드 추가 / 학번, 이름 input 받아야 한다 / 돈이랑 사용하는 세탁기는 나중에 다른 함수로 따로 구현
     int check, num;
 
@@ -43,7 +43,7 @@ void Insert(List *list)
         list->link = tp;             // 더미노드가 새로운 노드를 가리키게 한다
     }
 }
-void Delete(List *list)
+void ListDelete(List *list)
 {                           // list에서 노드 삭제
     List *cur = list->link; // 더미노드를 가리킨다
     List *temp = list;      // head를 가리킨다
@@ -70,7 +70,7 @@ void Delete(List *list)
         printf("%d 학번의 학생이 사용자 정보에 등록되어 있지 않습니다\n", num);
     }
 }
-void Print(List *list)
+void ListPrint(List *list)
 { // list의 모든 user에 대한 내용 print
     List *cur = list->link;
 
@@ -81,7 +81,7 @@ void Print(List *list)
         cur = cur->link;
     }
 }
-void IsEmpty(List *list)
+void ListIsEmpty(List *list)
 { // list가 비어있는지 여부 확인
 
     List *cur = list->link;
@@ -97,7 +97,7 @@ void IsEmpty(List *list)
     }
 }
 
-void Update(List *list)
+void ListUpdate(List *list)
 { // user에 대한 정보 수정
     int num;
     List *cur = list->link;
@@ -122,7 +122,7 @@ void Update(List *list)
     printf("%d 학번의 학생은 존재하지 않습니다.\n", num);
 }
 
-int Find(List *list, int num)
+int ListFind(List *list, int num)
 { // 원하는 학생 찾으면 1 return
 
     List *cur = list->link;
