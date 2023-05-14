@@ -40,12 +40,15 @@ int main(void)
         }
         else if (menu == 2)
         {
+            success_fail(ListInsert(head));
         }
         else if (menu == 3)
         {
+            success_fail(ListUpdate(head));
         }
         else if (menu == 4)
         {
+            success_fail(ListDelete(head));
         }
         else if (menu == 5)
         {

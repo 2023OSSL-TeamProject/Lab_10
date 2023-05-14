@@ -11,14 +11,14 @@ typedef struct _user
 
 typedef struct _list
 {
-    User user;  // 노드 안에서 user의 데이터를 저장
+    User user;          // 노드 안에서 user의 데이터를 저장
     struct _list *link; // list를 가리키는 링크
 } List;
 
-void ListInit(List *list);     // list의 초기화를 담당한다
-void ListInsert(List *list);       // list에서 노드 추가
-void ListDelete(List *list);       // list에서 노드 삭제
+void ListInit(List *list);         // list의 초기화를 담당한다
+int ListInsert(List *list);        // list에서 노드 추가
+int ListDelete(List *list);        // list에서 노드 삭제
 void ListPrint(List *list);        // list print
 void ListIsEmpty(List *list);      // list가 비어있는지 확인
-void ListUpdate(List *list);       // user에 대한 정보 수정
+int ListUpdate(List *list);        // user에 대한 정보 수정
 int ListFind(List *list, int num); // 원하는 user 탐색
