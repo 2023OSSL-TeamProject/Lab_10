@@ -64,6 +64,7 @@ int main(void)
         }
         else if (menu == 9)
         {
+            washerShop(head);
         }
         else if (menu == 10)
         {

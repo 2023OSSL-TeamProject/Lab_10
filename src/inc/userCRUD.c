@@ -184,7 +184,6 @@ struct _list *ListFind(List *list, int num)
     {
         if (cur->user.studentNum == num)
         {
-            printf("학번 : %d 이름 : %s\n", cur->user.studentNum, cur->user.name);
             return cur;
         }
         cur = cur->link;
@@ -192,9 +191,9 @@ struct _list *ListFind(List *list, int num)
     return NULL;
 }
 
-int IntListFind(List* list, int num)
+int IntListFind(List *list, int num)
 {
-    List *cur = list->link;
+    List *cur = list->link->link;
     if (list->link->link == NULL)
     {
         return 0;
