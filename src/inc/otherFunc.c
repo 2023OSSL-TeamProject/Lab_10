@@ -35,7 +35,11 @@ void washerShop(List *list)
 
     tp = ListFind(list, num); // 1이면 있고 0이면 없다
 
+<<<<<<< HEAD
     if (tp != NULL) // tp가 어떠한 값을 가리키지 않는 경우
+=======
+    if (tp == NULL) // tp가 어떠한 값을 가리키지 않는 경우
+>>>>>>> KDG
     {
         printf("%d번 학생은 사용자로 등록 되어있지 않습니다. \n", num);
     }
