@@ -51,10 +51,10 @@ int ListInsert(List *list)
     }
 }
 int ListDelete(List *list)
-{                           // list에서 노드 삭제
-    List *cur = list->link; // 더미노드를 가리킨다
-    List *temp = list;      // head를 가리킨다
-    int num;                // 학번 입력받을 숫자
+{                                 // list에서 노드 삭제
+    List *cur = list->link->link; // 더미노드를 가리킨다
+    List *temp = list->link;      // head를 가리킨다
+    int num;                      // 학번 입력받을 숫자
 
     if (list->link->link == NULL)
     {
@@ -151,7 +151,7 @@ int ListUpdate(List *list)
     {
         printf("정보를 수정하고자 하는 학생의 학번을 입력하세요 > ");
         scanf("%d", &num);
-
+        println();
         while (cur)
         {
             if (cur->user.studentNum == num)
