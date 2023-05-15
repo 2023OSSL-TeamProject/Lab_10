@@ -24,3 +24,5 @@ void ListPrint(List *list);                  // list print
 void ListIsEmpty(List *list);                // list가 비어있는지 확인
 int ListUpdate(List *list);                  // user에 대한 정보 수정
 struct _list *ListFind(List *list, int num); // 원하는 user 탐색
+
+void washerShop(List *list);

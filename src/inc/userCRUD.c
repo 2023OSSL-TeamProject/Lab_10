@@ -20,7 +20,7 @@ int ListInsert(List *list)
     printf("사용자의 학번을 입력하세요 > ");
     scanf("%d", &num);
 
-    check = ListFind(list, num);
+    // check = ListFind(list, num);
 
     if (check == 1)
     {
@@ -175,7 +175,7 @@ int ListUpdate(List *list)
 struct _list *ListFind(List *list, int num)
 { // 원하는 학생 찾으면 1 return
 
-    List *cur = list->link;
+    List *cur = list->link->link;
     if (list->link->link == NULL)
     {
         return 0;
