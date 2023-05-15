@@ -31,6 +31,8 @@ void ListInsert(List *list)
         List *tp = malloc(sizeof(List));
 
         tp->user.money = 0;
+        tp->user.detergent = 0;
+        tp->user.fabricConditioner = 0;
 
         tp->user.studentNum = num; // 학번 입력
         printf("사용자의 이름을 입력하세요 > ");
