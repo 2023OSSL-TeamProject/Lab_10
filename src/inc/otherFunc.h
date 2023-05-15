@@ -4,5 +4,3 @@
 void println();
 
 void success_fail(int result);
-
-void washerShop(List *list);
