@@ -131,7 +131,7 @@ void ListIsEmpty(List *list)
     }
 }
 
-void ListUpdate(List *list)
+int ListUpdate(List *list)
 { // user에 대한 정보 수정
 
     printf("<<< User Information >>>\n");
@@ -172,7 +172,7 @@ void ListUpdate(List *list)
     }
 }
 
-struct _list* ListFind(List *list, int num)
+struct _list *ListFind(List *list, int num)
 { // 원하는 학생 찾으면 1 return
 
     List *cur = list->link;
