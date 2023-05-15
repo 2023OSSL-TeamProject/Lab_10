@@ -26,3 +26,5 @@ int ListUpdate(List *list);                  // user에 대한 정보 수정
 struct _list *ListFind(List *list, int num); // 원하는 user 탐색
 
 void washerShop(List *list);
+
+int IntListFind(List* list, int num);
