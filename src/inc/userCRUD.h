@@ -21,4 +21,4 @@ void ListDelete(List *list);       // list에서 노드 삭제
 void ListPrint(List *list);        // list print
 void ListIsEmpty(List *list);      // list가 비어있는지 확인
 void ListUpdate(List *list);       // user에 대한 정보 수정
-int ListFind(List *list, int num); // 원하는 user 탐색
+struct _list* ListFind(List *list, int num); // 원하는 user 탐색

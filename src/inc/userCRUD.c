@@ -122,7 +122,7 @@ void ListUpdate(List *list)
     printf("%d 학번의 학생은 존재하지 않습니다.\n", num);
 }
 
-int ListFind(List *list, int num)
+struct _list* ListFind(List *list, int num)
 { // 원하는 학생 찾으면 1 return
 
     List *cur = list->link;
@@ -131,8 +131,8 @@ int ListFind(List *list, int num)
         if (cur->user.studentNum == num)
         {
             printf("학번 : %d 이름 : %s\n", cur->user.studentNum, cur->user.name);
-            return 1;
+            return cur;
         }
     }
-    return 0;
+    return NULL;
 }
