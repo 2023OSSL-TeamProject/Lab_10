@@ -1,6 +1,7 @@
 // 추가적인 함수를 구현하는 파일입니다.
 #include <stdio.h>
 #include <stdlib.h>
+#include "userCRUD.h"
 #include "otherFunc.h"
 
 void println()
@@ -34,7 +35,7 @@ void washerShop(List *list)
 
     tp = ListFind(list, num); // 1이면 있고 0이면 없다
 
-    if (tp != NULL) // tp가 어떠한 값을 가리키지 않는 경우
+    if (tp == NULL) // tp가 어떠한 값을 가리키지 않는 경우
     {
         printf("%d번 학생은 사용자로 등록 되어있지 않습니다. \n", num);
     }
