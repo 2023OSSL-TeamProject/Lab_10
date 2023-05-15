@@ -28,3 +28,5 @@ struct _list *ListFind(List *list, int num); // 원하는 user 탐색
 void washerShop(List *list);
 
 int IntListFind(List* list, int num);
+
+void ListPrintDetergent(List *list); // user의 세제 수량 확인

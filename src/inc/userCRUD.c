@@ -108,7 +108,7 @@ void ListPrint(List *list)
 
         while (cur)
         {
-            printf("학번 : %d 이름 : %s\n", cur->user.studentNum, cur->user.name);
+            printf("학번 : %d 이름 : %s \n", cur->user.studentNum, cur->user.name);
 
             cur = cur->link;
         }
@@ -208,4 +208,22 @@ int IntListFind(List *list, int num)
         cur = cur->link;
     }
     return 0;
+}
+
+void ListPrintDetergent(List *list)
+{
+    int num;
+    printf("원하는 학생의 학번 입력 > ");
+    scanf("%d", &num);
+
+    List *cur = ListFind(list, num);
+
+    if(cur != NULL)
+    {
+        printf("%d번 학생의 세제 보유량은 %d개 이고, 섬유유연제 보유량은 %d개 입니다.\n", num, cur->user.detergent, cur->user.fabricConditioner);
+    }
+    else
+    {
+        printf("존재하지 않는 학생입니다.\n");
+    }
 }
