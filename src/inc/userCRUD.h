@@ -6,6 +6,9 @@ typedef struct _user
     int money;       // user가 가지고있는 돈
     char name[20];   // user 이름
     char washer[20]; // 사용중인 세탁기 이름,,?
+    int detergent; // 세제 수량
+    int fabricConditioner; // 섬유유연제 수량
+
 
 } User;
 

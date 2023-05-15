@@ -68,19 +68,22 @@ void washerShop(List *list)
             {
                 while(1)
                 {
-                    printf("세제는 2000원입니다. 구매하시겠습니까?(yes:1 no:2) > ");
+                    printf("세제는 500원입니다. 구매하시겠습니까?(yes:1 no:2) > ");
                     scanf("%d", &check);
 
                     if(check == 1)
                     {
-                        tp->user.money -= 2000;
+                        tp->user.money -= 500;
 
                         if(tp->user.money >= 0)
-                        printf("구매가 완료되었습니다. 감사합니다.\n");
+                        {
+                            tp->user.detergent++;
+                            printf("구매가 완료되었습니다. 감사합니다.\n");
+                        }
                         else
                         {
                             printf("잔액 부족입니다.\n");
-                            tp->user.money += 2000; 
+                            tp->user.money += 500; 
                         }
                         break;
                     }
@@ -94,15 +97,51 @@ void washerShop(List *list)
                         printf("잘못된 번호입니다. 다시 입력하세요.\n");
                     }
                 }
+
+                break;
                 
             }
             else if(n == 4)
             {
+                while(1)
+                {
+                    printf("섬유유연제는 500원입니다. 구매하시겠습니까?(yes:1 no:2) > ");
+                    scanf("%d", &check);
 
+                    if(check == 1)
+                    {
+                        tp->user.money -= 500;
+
+                        if(tp->user.money >= 0)
+                        {
+                            tp->user.fabricConditioner++;
+                            printf("구매가 완료되었습니다. 감사합니다.\n");
+                        }
+                        
+                        else
+                        {
+                            printf("잔액 부족입니다.\n");
+                            tp->user.money += 500; 
+                        }
+                        break;
+                    }
+                    else if(check == 2)
+                    {
+                        printf("섬유유연제 구매를 종료합니다.\n");
+                        break;
+                    }
+                    else
+                    {
+                        printf("잘못된 번호입니다. 다시 입력하세요.\n");
+                    }
+                }
+
+                break;
             }
             else if(n == 0)
             {
-
+                printf("프로그램을 종료합니다.\n");
+                break;
             }
             else
             {
