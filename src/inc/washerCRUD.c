@@ -3,14 +3,6 @@
 #include "washerCRUD.h"
 #include "otherFunc.h"
 
-typedef struct _washer
-{
-    char UserName[20]; // User 이름
-    int UserNumber;    // User 학번
-    int UserTime;      // 세탁기 사용 시간
-
-} Washer;
-
 char dormitoryInfo[2][20] = {"비전관", "벧엘관"};
 char floorInfo[4][20] = {"1층", "2층", "3층", "4층"};
 char washerInfo[2][20] = {"세탁기1", "세탁기2"};
@@ -182,3 +174,26 @@ int ChoiceWasher()
     }
     return 0;
 }
+
+void WasherTimePrint()
+{
+
+    printf("<<< 세탁기 예약 시간표 >>>\n");
+    printf("\n");
+    for (int i = 8; i <= 22; i++)
+    {
+        if (i == 8)
+        {
+            printf("0%d:00 ~ 0%d:00\n", i, i + 1);
+        }
+        else if (i == 9)
+        {
+            printf("0%d:00 ~ %d:00\n", i, i + 1);
+        }
+        else if (i >= 10)
+        {
+            printf("%d:00 ~ %d:00\n", i, i + 1);
+        }
+    }
+    println();
+};

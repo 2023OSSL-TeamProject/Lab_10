@@ -13,6 +13,8 @@ int main(void)
 
     head = malloc(sizeof(List));
 
+    Washer *washerList[16];
+
     ListInit(head);
 
     system("clear"); // 프로그램 시작 시 terminal 화면을 clear 해준다.
@@ -56,6 +58,12 @@ int main(void)
         else if (menu == 6)
         {
             int index = ChoiceWasher();
+            if (index != 0)
+            {
+                index--;
+                // washerList[index];
+                WasherTimePrint();
+            }
         }
         else if (menu == 7)
         {
