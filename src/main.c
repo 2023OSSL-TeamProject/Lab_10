@@ -55,7 +55,7 @@ int main(void)
         }
         else if (menu == 6)
         {
-            int index = ChoiceWaseher();
+            int index = ChoiceWasher();
         }
         else if (menu == 7)
         {

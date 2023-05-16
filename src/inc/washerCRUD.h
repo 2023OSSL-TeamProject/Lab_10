@@ -1,3 +1,3 @@
 // 세탁기에 대한 CRUD
 
-int ChoiceWaseher();
+int ChoiceWasher();

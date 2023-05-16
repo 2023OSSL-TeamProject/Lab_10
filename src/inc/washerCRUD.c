@@ -15,7 +15,7 @@ char dormitoryInfo[2][20] = {"비전관", "벧엘관"};
 char floorInfo[4][20] = {"1층", "2층", "3층", "4층"};
 char washerInfo[2][20] = {"세탁기1", "세탁기2"};
 // 세탁기 선택 함수
-int ChoiceWaseher()
+int ChoiceWasher()
 {
     int dormitory = 0; // 기숙사
     int floor = 0;     // 층
