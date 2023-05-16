@@ -1,4 +1,7 @@
+
 // user_CRUD.c에서 사용하는 함수들을 모아 놓은 헤더파일입니다.
+#ifndef USER_CRUD_H
+#define USER_CRUD_H
 
 typedef struct _user
 {
@@ -27,4 +30,6 @@ struct _list *ListFind(List *list, int num); // 원하는 user 탐색
 
 void washerShop(List *list);
 
-int IntListFind(List* list, int num);
+int IntListFind(List *list, int num);
+
+#endif

@@ -57,13 +57,12 @@ int main(void)
         }
         else if (menu == 6)
         {
-            int index = ChoiceWasher();
-            if (index != 0)
-            {
-                index--;
-                // washerList[index];
-                WasherTimePrint();
-            }
+            // int index = ChoiceWasher();
+            // if (index != 0)
+            // {
+            //     index--;
+            int result = WasherInsert(washerList, head);
+            // }
         }
         else if (menu == 7)
         {
