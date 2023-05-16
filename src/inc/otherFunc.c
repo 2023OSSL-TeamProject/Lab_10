@@ -48,7 +48,7 @@ void washerShop(List *list)
 
         while (n != 0)
         {
-            printf("[1] 잔여 금액 확인\n");
+            printf("[1] 나의 정보 확인\n");
             printf("[2] 금액 충전\n");
             printf("[3] 세제 구매\n");
             printf("[4] 섬유유연제 구매\n");
@@ -62,6 +62,7 @@ void washerShop(List *list)
             if (n == 1)
             {
                 printf("%d번 학생의 잔여 금액은 %d원 입니다.\n", num, tp->user.money);
+                printf("%d번 학생의 세제 보유량은 %d개 이고, 섬유유연제 보유량은 %d개 입니다.\n", num, tp->user.detergent, tp->user.fabricConditioner);
                 println();
             }
             else if (n == 2)

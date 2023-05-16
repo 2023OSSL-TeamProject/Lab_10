@@ -209,21 +209,3 @@ int IntListFind(List *list, int num)
     }
     return 0;
 }
-
-void ListPrintDetergent(List *list)
-{
-    int num;
-    printf("원하는 학생의 학번 입력 > ");
-    scanf("%d", &num);
-
-    List *cur = ListFind(list, num);
-
-    if(cur != NULL)
-    {
-        printf("%d번 학생의 세제 보유량은 %d개 이고, 섬유유연제 보유량은 %d개 입니다.\n", num, cur->user.detergent, cur->user.fabricConditioner);
-    }
-    else
-    {
-        printf("존재하지 않는 학생입니다.\n");
-    }
-}
