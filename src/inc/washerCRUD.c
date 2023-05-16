@@ -228,6 +228,7 @@ int WasherInsert(Washer *washerList[], List *list)
     int studentNumber = 0;
     int ChoiceTime;
     int again = 0;
+    int index = 0;
     printf("예약하고자 하는 사용자의 학번을 입력해주세요 : ");
     scanf("%d", &studentNumber);
     println();
@@ -241,19 +242,50 @@ int WasherInsert(Washer *washerList[], List *list)
     else
     {
         println();
-        int index = ChoiceWasher();
+        index = ChoiceWasher();
+        if (index == 0)
+        {
+            return 0;
+        }
+
         WasherTimePrint(washerList[index - 1]);
         while (1)
         {
-            printf("=> 시간대를 입력하세요 (예시 : 18:00 ~ 19:00 -> 18) : ");
-            ChoiceTime = 0;
-            scanf("%d", &ChoiceTime);
-            println();
+            while (1)
+            {
+                printf("=> 시간대를 입력하세요 (예시 : 18:00 ~ 19:00 -> 18) : ");
+                ChoiceTime = 0;
+                scanf("%d", &ChoiceTime);
+                println();
+
+                if (ChoiceTime < 8 || ChoiceTime > 22)
+                {
+                    printf("이용할 수 없는 시간대입니다.\n");
+                    printf("\n");
+                    again = 0;
+                    printf("=> (종료 : 0 | 다시 선택 : 1) : ");
+                    scanf("%d", &again);
+                    println();
+                    if (again == 0)
+                    {
+                        printf("세탁기 예약이 종료되었습니다.\n");
+                        println();
+                        break;
+                    }
+                    else
+                        continue;
+                }
+                else
+                {
+                    break;
+                }
+            }
             List *tp = ListFind(list, studentNumber);
             if (washerList[index - 1]->washerData[ChoiceTime - 8].UserTime == ChoiceTime)
             {
                 printf("이미 예약되어 있는 시간대입니다.\n");
                 println();
+                again = 0;
                 printf("=> (종료 : 0 | 다시 선택 : 1) : ");
                 scanf("%d", &again);
                 println();

@@ -14,6 +14,10 @@ int main(void)
     head = malloc(sizeof(List));
 
     Washer *washerList[16];
+    for (int i = 0; i < 16; i++)
+    {
+        washerList[i] = (Washer *)malloc(sizeof(Washer));
+    }
 
     ListInit(head);
 
@@ -57,15 +61,12 @@ int main(void)
         }
         else if (menu == 6)
         {
-            // int index = ChoiceWasher();
-            // if (index != 0)
-            // {
-            //     index--;
-            int result = WasherInsert(washerList, head);
-            // }
+            int index = ChoiceWasher();
+            WasherTimePrint(washerList[index - 1]);
         }
         else if (menu == 7)
         {
+            int result = WasherInsert(washerList, head);
         }
         else if (menu == 8)
         {
