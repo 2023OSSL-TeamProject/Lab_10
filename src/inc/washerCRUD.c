@@ -229,6 +229,7 @@ int WasherInsert(Washer *washerList[], List *list)
     int ChoiceTime;
     int again = 0;
     int index = 0;
+
     printf("예약하고자 하는 사용자의 학번을 입력해주세요 : ");
     scanf("%d", &studentNumber);
     println();
@@ -241,6 +242,31 @@ int WasherInsert(Washer *washerList[], List *list)
     }
     else
     {
+        List *tp = ListFind(list, studentNumber);
+
+        if (tp->user.money < 1000)
+        {
+            printf("\n금액이 부족합니다.\n");
+            println();
+            return 0;
+        }
+        if (tp->user.detergent < 1)
+        {
+            printf("\n세제가 부족합니다.\n");
+            println();
+            return 0;
+        }
+        if (tp->user.fabricConditioner < 1)
+        {
+            printf("\n섬유유연제가 부족합니다.\n");
+            println();
+            return 0;
+        }
+
+        tp->user.money -= 1000;
+        tp->user.detergent--;
+        tp->user.fabricConditioner--;
+
         println();
         index = ChoiceWasher();
         if (index == 0)
@@ -280,7 +306,7 @@ int WasherInsert(Washer *washerList[], List *list)
                     break;
                 }
             }
-            List *tp = ListFind(list, studentNumber);
+
             if (washerList[index - 1]->washerData[ChoiceTime - 8].UserTime == ChoiceTime)
             {
                 printf("이미 예약되어 있는 시간대입니다.\n");
