@@ -1,5 +1,6 @@
 // 세탁기에 대한 CRUD
 #include <stdio.h>
+#include <string.h>
 #include "washerCRUD.h"
 #include "otherFunc.h"
 
@@ -175,7 +176,7 @@ int ChoiceWasher()
     return 0;
 }
 
-void WasherTimePrint()
+void WasherTimePrint(Washer *washList)
 {
 
     printf("<<< 세탁기 예약 시간표 >>>\n");
@@ -184,16 +185,100 @@ void WasherTimePrint()
     {
         if (i == 8)
         {
-            printf("0%d:00 ~ 0%d:00\n", i, i + 1);
+            printf("0%d:00 ~ 0%d:00 : ", i, i + 1);
+            if (washList->washerData[i - 8].UserTime == i)
+            {
+                printf("%s | %d\n", washList->washerData[i - 8].UserName, washList->washerData[i - 8].UserNumber);
+            }
+            else
+            {
+                printf("\n");
+            }
         }
         else if (i == 9)
         {
-            printf("0%d:00 ~ %d:00\n", i, i + 1);
+            printf("0%d:00 ~ %d:00 : ", i, i + 1);
+            if (washList->washerData[i - 8].UserTime == i)
+            {
+                printf("%s | %d\n", washList->washerData[i - 8].UserName, washList->washerData[i - 8].UserNumber);
+            }
+            else
+            {
+                printf("\n");
+            }
         }
         else if (i >= 10)
         {
-            printf("%d:00 ~ %d:00\n", i, i + 1);
+            printf("%d:00 ~ %d:00 : ", i, i + 1);
+            if (washList->washerData[i - 8].UserTime == i)
+            {
+                printf("%s | %d\n", washList->washerData[i - 8].UserName, washList->washerData[i - 8].UserNumber);
+            }
+            else
+            {
+                printf("\n");
+            }
         }
     }
     println();
 };
+
+int WasherInsert(Washer *washerList[], List *list)
+{
+    int studentNumber = 0;
+    int ChoiceTime;
+    int again = 0;
+    printf("예약하고자 하는 사용자의 학번을 입력해주세요 : ");
+    scanf("%d", &studentNumber);
+    println();
+    int check = IntListFind(list, studentNumber);
+    if (check == 0)
+    {
+        printf("등록되어 있지 않은 학번입니다.\n");
+        println();
+        return 0;
+    }
+    else
+    {
+        println();
+        int index = ChoiceWasher();
+        WasherTimePrint(washerList[index - 1]);
+        while (1)
+        {
+            printf("=> 시간대를 입력하세요 (예시 : 18:00 ~ 19:00 -> 18) : ");
+            ChoiceTime = 0;
+            scanf("%d", &ChoiceTime);
+            println();
+            List *tp = ListFind(list, studentNumber);
+            if (washerList[index - 1]->washerData[ChoiceTime - 8].UserTime == ChoiceTime)
+            {
+                printf("이미 예약되어 있는 시간대입니다.\n");
+                println();
+                printf("=> (종료 : 0 | 다시 선택 : 1) : ");
+                scanf("%d", &again);
+                println();
+                if (again == 0)
+                {
+                    printf("세탁기 예약이 종료되었습니다.\n");
+                    println();
+                    break;
+                }
+                else
+                    continue;
+            }
+            else
+            {
+                washerList[index - 1]->washerData[ChoiceTime - 8].UserNumber = tp->user.studentNum;
+                strcpy(washerList[index - 1]->washerData[ChoiceTime - 8].UserName, tp->user.name);
+
+                washerList[index - 1]->washerData[ChoiceTime - 8].UserTime = ChoiceTime;
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
+//
+//
+//
