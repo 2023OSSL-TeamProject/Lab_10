@@ -62,7 +62,10 @@ int main(void)
         else if (menu == 6)
         {
             int index = ChoiceWasher();
-            WasherTimePrint(washerList[index - 1]);
+            if (index != 0)
+            {
+                WasherTimePrint(washerList[index - 1]);
+            }
         }
         else if (menu == 7)
         {
@@ -70,6 +73,7 @@ int main(void)
         }
         else if (menu == 8)
         {
+            int result = WasherDelete(washerList, head);
         }
         else if (menu == 9)
         {

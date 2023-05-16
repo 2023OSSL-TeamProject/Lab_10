@@ -186,7 +186,7 @@ void WasherTimePrint(Washer *washList)
         if (i == 8)
         {
             printf("0%d:00 ~ 0%d:00 : ", i, i + 1);
-            if (washList->washerData[i - 8].UserTime == i)
+            if (washList->washerData[i - 8].UserTime == i && washList->washerData[i - 8].UserNumber != 0)
             {
                 printf("%s | %d\n", washList->washerData[i - 8].UserName, washList->washerData[i - 8].UserNumber);
             }
@@ -198,7 +198,7 @@ void WasherTimePrint(Washer *washList)
         else if (i == 9)
         {
             printf("0%d:00 ~ %d:00 : ", i, i + 1);
-            if (washList->washerData[i - 8].UserTime == i)
+            if (washList->washerData[i - 8].UserTime == i && washList->washerData[i - 8].UserNumber != 0)
             {
                 printf("%s | %d\n", washList->washerData[i - 8].UserName, washList->washerData[i - 8].UserNumber);
             }
@@ -210,7 +210,7 @@ void WasherTimePrint(Washer *washList)
         else if (i >= 10)
         {
             printf("%d:00 ~ %d:00 : ", i, i + 1);
-            if (washList->washerData[i - 8].UserTime == i)
+            if (washList->washerData[i - 8].UserTime == i && washList->washerData[i - 8].UserNumber != 0)
             {
                 printf("%s | %d\n", washList->washerData[i - 8].UserName, washList->washerData[i - 8].UserNumber);
             }
@@ -336,6 +336,139 @@ int WasherInsert(Washer *washerList[], List *list)
     }
 
     return 0;
+}
+
+int WasherDelete(Washer *washerList[], List *list)
+{
+    int studentNumber = 0;
+    int myinfo[50][2];
+    int choiceNumber = -1;
+
+    printf("예약하고자 하는 사용자의 학번을 입력해주세요 : ");
+    scanf("%d", &studentNumber);
+    println();
+    int check = IntListFind(list, studentNumber);
+    if (check == 0)
+    {
+        printf("등록되어 있지 않은 학번입니다.\n");
+        println();
+        return 0;
+    }
+    else
+    {
+        int count = 0;
+        List *tp = ListFind(list, studentNumber);
+
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 0; j < 16; j++)
+            {
+
+                if (washerList[i]->washerData[j].UserNumber == tp->user.studentNum)
+                {
+                    count++;
+                    myinfo[count - 1][0] = i;
+                    myinfo[count - 1][1] = j;
+                }
+            }
+        }
+        printf("\n");
+
+        if (count != 0)
+        {
+            int count2 = 0;
+            println();
+            printf("No | 기숙사 | 사용 층 |  세탁기  | 시간 |   이름   | 학번 \n");
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 16; j++)
+                {
+
+                    if (washerList[i]->washerData[j].UserNumber == tp->user.studentNum)
+                    {
+                        count2++;
+                        printf("%d  |", count2);
+                        searchWasher(i);
+                        printf("| %d  | %s | %d\n", washerList[i]->washerData[j].UserTime, washerList[i]->washerData[j].UserName, washerList[i]->washerData[j].UserNumber);
+                    }
+                }
+            }
+
+            printf("=> 삭제할 예약 번호를 입력하세요 : ");
+            scanf("%d", &choiceNumber);
+            println();
+
+            washerList[myinfo[choiceNumber - 1][0]]->washerData[myinfo[choiceNumber - 1][1]].UserNumber = 0;
+            tp->user.detergent++;
+            tp->user.fabricConditioner++;
+            tp->user.money += 1000;
+
+            printf("삭제되었습니다.\n");
+            println();
+            return 1;
+        }
+        else if (count == 0)
+        {
+            printf("삭제할 예약 내역이 없습니다.\n");
+            println();
+            return 0;
+        }
+    }
+    return 0;
+};
+void searchWasher(int num)
+{
+    switch (num + 1)
+    {
+    case 1:
+        printf(" 비전관 |   1층   | 세탁기 1 ");
+        break;
+    case 2:
+        printf(" 비전관 |   1층   | 세탁기 2 ");
+        break;
+    case 3:
+        printf(" 비전관 |   2층   | 세탁기 1 ");
+        break;
+    case 4:
+        printf(" 비전관 |   2층   | 세탁기 2 ");
+        break;
+    case 5:
+        printf(" 비전관 |   3층   | 세탁기 1 ");
+        break;
+    case 6:
+        printf(" 비전관 |   3층   | 세탁기 1 ");
+        break;
+    case 7:
+        printf(" 비전관 |   4층   | 세탁기 1 ");
+        break;
+    case 8:
+        printf(" 비전관 |   4층   | 세탁기 1 ");
+        break;
+    case 9:
+        printf(" 벧엘관 |   1층   | 세탁기 1 ");
+        break;
+    case 10:
+        printf(" 벧엘관 |   1층   | 세탁기 2 ");
+        break;
+    case 11:
+        printf(" 벧엘관 |   2층   | 세탁기 1 ");
+        break;
+    case 12:
+        printf(" 벧엘관 |   2층   | 세탁기 2 ");
+        break;
+    case 13:
+        printf(" 벧엘관 |   3층   | 세탁기 1 ");
+        break;
+    case 14:
+        printf(" 벧엘관 | 3층 | 세탁기 2 ");
+        break;
+    case 15:
+        printf(" 벧엘관 | 4층 | 세탁기 1 ");
+        break;
+    case 16:
+        printf(" 벧엘관 | 5층 | 세탁기 2 ");
+        break;
+    }
 }
 //
 //

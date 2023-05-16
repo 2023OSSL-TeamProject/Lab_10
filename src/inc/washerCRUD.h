@@ -19,5 +19,7 @@ typedef struct
 int ChoiceWasher();
 void WasherTimePrint(Washer *washList);
 int WasherInsert(Washer *washerList[], List *list);
+int WasherDelete(Washer *washerList[], List *list);
+void searchWasher(int num);
 
 #endif
