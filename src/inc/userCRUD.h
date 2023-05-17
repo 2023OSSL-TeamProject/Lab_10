@@ -31,4 +31,7 @@ void washerShop(List *list);
 
 int IntListFind(List *list, int num);
 
+void saveUserData(List *list);
+void loadUserData(List *list);
+
 #endif

@@ -209,3 +209,35 @@ int IntListFind(List *list, int num)
     }
     return 0;
 }
+
+void saveUserData(List *list) // head를 넘겨줘야 한다
+{
+    FILE *fp;
+
+    fp = fopen("./txt/userList.txt", "wt");
+
+    List *cur = list;
+    
+    while(cur)
+    {
+        fprintf(fp, "%d %s %d %d %d", cur->user.studentNum, cur->user.name, cur->user.money, cur->user.detergent, cur->user.fabricConditioner);
+        cur = cur->link;
+    }
+
+    fclose(fp);
+    printf("=> user 정보 저장 완료!");
+}
+
+void loadUserData(List *list)
+{
+    FILE *fp;
+
+    fp = fopen("./txt/userList.txt", "rt");
+
+    while(1)
+    {
+        List *cur = malloc(sizeof(List));
+
+        
+    }
+}
