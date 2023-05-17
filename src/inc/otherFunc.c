@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "userCRUD.h"
 #include "otherFunc.h"
+#include "washerCRUD.h"
 
 void println()
 {

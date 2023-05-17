@@ -8,7 +8,6 @@
 
 int main(void)
 {
-
     List *head;
 
     head = malloc(sizeof(List));
@@ -19,9 +18,10 @@ int main(void)
         washerList[i] = (Washer *)malloc(sizeof(Washer));
     }
 
+    loadData(washerList);
     ListInit(head);
 
-    system("clear"); // 프로그램 시작 시 terminal 화면을 clear 해준다.
+    // system("clear"); // 프로그램 시작 시 terminal 화면을 clear 해준다.
     while (1)
     {
         int menu = choice_menu(); // 사용자로부터 menu 번호를 받는다.
@@ -58,6 +58,7 @@ int main(void)
         }
         else if (menu == 5)
         {
+            saveData(washerList);
         }
         else if (menu == 6)
         {

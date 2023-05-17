@@ -10,7 +10,7 @@ int choice_menu()
     printf("[2] 사용자 추가\n");
     printf("[3] 사용자 수정\n");
     printf("[4] 사용자 삭제\n");
-    printf("[5] 조회(특정 값)\n"); //?
+    printf("[5] 파일 저장\n");
     printf("[6] 세탁기 정보 조회\n");
     printf("[7] 세탁기 예약\n");
     printf("[8] 세탁기 예약 취소\n");

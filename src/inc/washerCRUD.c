@@ -1,5 +1,6 @@
 // 세탁기에 대한 CRUD
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "washerCRUD.h"
 #include "otherFunc.h"
@@ -244,6 +245,12 @@ int WasherInsert(Washer *washerList[], List *list)
     {
         List *tp = ListFind(list, studentNumber);
 
+        printf("잔여 금액 : %d\n", tp->user.money);
+        printf("잔여 세제 : %d\n", tp->user.detergent);
+        printf("잔여 섬유 : %d\n", tp->user.fabricConditioner);
+        // printf("%d번 학생의 잔여 금액은 %d원 입니다.\n", 1, tp->user.money);
+        // printf("%d번 학생의 세제 보유량은 %d개 이고, 섬유유연제 보유량은 %d개 입니다.\n", 1, tp->user.detergent, tp->user.fabricConditioner);
+
         if (tp->user.money < 1000)
         {
             printf("\n금액이 부족합니다.\n");
@@ -344,7 +351,7 @@ int WasherDelete(Washer *washerList[], List *list)
     int myinfo[50][2];
     int choiceNumber = -1;
 
-    printf("예약하고자 하는 사용자의 학번을 입력해주세요 : ");
+    printf("삭제하고자 하는 사용자의 학번을 입력해주세요 : ");
     scanf("%d", &studentNumber);
     println();
     int check = IntListFind(list, studentNumber);
@@ -359,7 +366,7 @@ int WasherDelete(Washer *washerList[], List *list)
         int count = 0;
         List *tp = ListFind(list, studentNumber);
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 16; i++)
         {
             for (int j = 0; j < 16; j++)
             {
@@ -379,7 +386,7 @@ int WasherDelete(Washer *washerList[], List *list)
             int count2 = 0;
             println();
             printf("No | 기숙사 | 사용 층 |  세탁기  | 시간 |   이름   | 학번 \n");
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 16; i++)
             {
                 for (int j = 0; j < 16; j++)
                 {
@@ -397,15 +404,24 @@ int WasherDelete(Washer *washerList[], List *list)
             printf("=> 삭제할 예약 번호를 입력하세요 : ");
             scanf("%d", &choiceNumber);
             println();
+            if (choiceNumber < count2 || choiceNumber > count2)
+            {
+                printf("없는 번호입니다.\n");
+                println();
+                return 0;
+            }
+            else
+            {
 
-            washerList[myinfo[choiceNumber - 1][0]]->washerData[myinfo[choiceNumber - 1][1]].UserNumber = 0;
-            tp->user.detergent++;
-            tp->user.fabricConditioner++;
-            tp->user.money += 1000;
+                washerList[myinfo[choiceNumber - 1][0]]->washerData[myinfo[choiceNumber - 1][1]].UserNumber = 0;
+                tp->user.detergent++;
+                tp->user.fabricConditioner++;
+                tp->user.money += 1000;
 
-            printf("삭제되었습니다.\n");
-            println();
-            return 1;
+                printf("삭제되었습니다.\n");
+                println();
+                return 1;
+            }
         }
         else if (count == 0)
         {
@@ -436,13 +452,13 @@ void searchWasher(int num)
         printf(" 비전관 |   3층   | 세탁기 1 ");
         break;
     case 6:
-        printf(" 비전관 |   3층   | 세탁기 1 ");
+        printf(" 비전관 |   3층   | 세탁기 2 ");
         break;
     case 7:
         printf(" 비전관 |   4층   | 세탁기 1 ");
         break;
     case 8:
-        printf(" 비전관 |   4층   | 세탁기 1 ");
+        printf(" 비전관 |   4층   | 세탁기 2 ");
         break;
     case 9:
         printf(" 벧엘관 |   1층   | 세탁기 1 ");
@@ -460,16 +476,231 @@ void searchWasher(int num)
         printf(" 벧엘관 |   3층   | 세탁기 1 ");
         break;
     case 14:
-        printf(" 벧엘관 | 3층 | 세탁기 2 ");
+        printf(" 벧엘관 |   3층   | 세탁기 2 ");
         break;
     case 15:
-        printf(" 벧엘관 | 4층 | 세탁기 1 ");
+        printf(" 벧엘관 |   4층   | 세탁기 1 ");
         break;
     case 16:
-        printf(" 벧엘관 | 5층 | 세탁기 2 ");
+        printf(" 벧엘관 |   4층   | 세탁기 2 ");
         break;
     }
 }
 //
 //
 //
+
+void saveData(Washer *washerList[])
+{
+    FILE *fp[16];
+    fp[0] = fopen("./txt/washer1.txt", "wt");
+
+    fp[1] = fopen("./txt/washer2.txt", "wt");
+
+    fp[2] = fopen("./txt/washer3.txt", "wt");
+
+    fp[3] = fopen("./txt/washer4.txt", "wt");
+
+    fp[4] = fopen("./txt/washer5.txt", "wt");
+
+    fp[5] = fopen("./txt/washer6.txt", "wt");
+
+    fp[6] = fopen("./txt/washer7.txt", "wt");
+
+    fp[7] = fopen("./txt/washer8.txt", "wt");
+
+    fp[8] = fopen("./txt/washer9.txt", "wt");
+
+    fp[9] = fopen("./txt/washe10.txt", "wt");
+
+    fp[10] = fopen("./txt/washer11.txt", "wt");
+
+    fp[11] = fopen("./txt/washer12.txt", "wt");
+
+    fp[12] = fopen("./txt/washer13.txt", "wt");
+
+    fp[13] = fopen("./txt/washer14.txt", "wt");
+
+    fp[14] = fopen("./txt/washer15.txt", "wt");
+
+    fp[15] = fopen("./txt/washer16.txt", "wt");
+
+    for (int i = 0; i < 16; i++)
+    {
+        if (fp[i] == NULL)
+        {
+
+            printf("=> 파일 없음\n");
+            return;
+        }
+    }
+
+    for (int i = 0; i < 16; i++)
+    {
+        for (int j = 0; j < 16; j++)
+        {
+            // char UserName[20]; // User 이름
+            // int UserNumber;    // User 학번
+            // int UserTime;      // 세탁기 사용 시간
+
+            if (washerList[i]->washerData[j].UserNumber > 0)
+            {
+                fprintf(fp[i], "%d %s %d\n", washerList[i]->washerData[j].UserNumber, washerList[i]->washerData[j].UserName, washerList[i]->washerData[j].UserTime);
+            }
+        }
+    }
+    for (int z = 0; z < 16; z++)
+        fclose(fp[z]);
+
+    printf("=> 저장됨!\n");
+    println();
+};
+
+void loadData(Washer *washerList[])
+{
+    int count = 0, i = 0;
+    FILE *fp[16];
+    int j = 0;
+    while (j < 16)
+    {
+        washerList[j] = (Washer *)malloc(sizeof(Washer));
+        j++;
+    }
+
+    fp[0] = fopen("./txt/washer1.txt", "rt");
+
+    fp[1] = fopen("./txt/washer2.txt", "rt");
+
+    fp[2] = fopen("./txt/washer3.txt", "rt");
+
+    fp[3] = fopen("./txt/washer4.txt", "rt");
+
+    fp[4] = fopen("./txt/washer5.txt", "rt");
+
+    fp[5] = fopen("./txt/washer6.txt", "rt");
+
+    fp[6] = fopen("./txt/washer7.txt", "rt");
+
+    fp[7] = fopen("./txt/washer8.txt", "rt");
+
+    fp[8] = fopen("./txt/washer9.txt", "rt");
+
+    fp[9] = fopen("./txt/washe10.txt", "rt");
+
+    fp[10] = fopen("./txt/washer11.txt", "rt");
+
+    fp[11] = fopen("./txt/washer12.txt", "rt");
+
+    fp[12] = fopen("./txt/washer13.txt", "rt");
+
+    fp[13] = fopen("./txt/washer14.txt", "rt");
+
+    fp[14] = fopen("./txt/washer15.txt", "rt");
+
+    fp[15] = fopen("./txt/washer16.txt", "rt");
+
+    for (int i = 0; i < 16; i++)
+    {
+        if (fp[i] == NULL)
+        {
+
+            printf("=> 파일 없음\n");
+            return;
+        }
+    }
+    WasherData test;
+    int a = 0;
+
+    for (int i = 0; i < 16; i++)
+    {
+        printf("\n%d번째 파일입니다.\n", i + 1);
+        while (fscanf(fp[i], "%d", &test.UserNumber) == 1)
+        {
+            if (feof(fp[i]))
+                break;
+            else
+            {
+                fscanf(fp[i], "%s", test.UserName);
+                fscanf(fp[i], "%d", &test.UserTime);
+            }
+            printf("%d\n", test.UserNumber);
+            printf("%s\n", test.UserName);
+            printf("%d\n", test.UserTime);
+            for (int k = 0; k < 16; k++)
+            {
+
+                if (test.UserTime - 8 == k)
+                {
+                    washerList[i]->washerData[k].UserNumber = test.UserNumber;
+                    washerList[i]->washerData[k].UserTime = test.UserTime;
+                    strcpy(washerList[i]->washerData[k].UserName, test.UserName);
+                    printf("\n");
+                    printf("Result : %d\n", washerList[i]->washerData[k].UserNumber);
+                    printf("Result : %s\n", washerList[i]->washerData[k].UserName);
+                    printf("Result : %d\n", washerList[i]->washerData[k].UserTime);
+                    printf("\n");
+                    break;
+                    // printf("%s\n", test.UserName);
+                    // printf("%d\n", test.UserTime);
+                }
+            }
+        }
+    }
+    // for (i = 0; i < 16; i++)
+    // {
+    //     printf("행 : %d\n", i + 1);
+    //     while (1)
+    //     {
+    //         if (feof(fp[i]) != 0)
+    //         {
+    //             fclose(fp[i]);
+    //             break;
+    //         }
+    //         else
+    //         {
+    //             printf("Yes!\n");
+    //             fscanf(fp[i], "%d", &test.UserNumber);
+    //             printf("%d\n", test.UserNumber);
+    //             fscanf(fp[i], "%s", test.UserName);
+    //             printf("%s\n", test.UserName);
+    //             fscanf(fp[i], "%d", &test.UserTime);
+    //             printf("%d\n", test.UserTime);
+    //         }
+    //     }
+    //     test.UserNumber = 0;
+    //     test.UserTime = 0;
+    //     strcpy(test.UserName, "");
+
+    //     // for (a = 0; a < 16; a++)
+    //     // {
+
+    //     // test[a].UserNumber = 0;
+    //     // test[a].UserTime = 0;
+    //     // strcpy(test[a].UserName, NULL);
+
+    //     // for (int k = 0; k < 16; k++)
+    //     // {
+
+    //     //     if (test.UserTime == k + 1)
+    //     //     {
+    //     //         washerList[i]->washerData[k].UserNumber = test.UserNumber;
+    //     //         washerList[i]->washerData[k].UserTime = test.UserTime;
+    //     //         strcpy(washerList[i]->washerData[k].UserName, test.UserName);
+    //     //     }
+
+    //     //     // fscanf(fp[i], "%d", &washerList[i]->washerData[k].UserNumber);
+    //     //     // if (feof(fp[i]))
+    //     //     // {
+    //     //     //     free(washerList[i]);
+    //     //     //     washerList[i - 1] = NULL;
+    //     //     //     break;
+    //     //     // }
+
+    //     //     // fscanf(fp[i], "%s", washerList[i]->washerData[k].UserName);
+    //     //     // fscanf(fp[i], "%d", &washerList[i]->washerData[k].UserTime);
+    //     // }
+    // }
+    for (int z = 0; z < 16; z++)
+        fclose(fp[z]);
+    printf("=> 로딩 성공!\n");
+};
