@@ -5,7 +5,7 @@ int choice_menu()
 {
 
     int menu = 0;
-    printf("<< 시스템 이름 >>\n");
+    printf("<< H-Wasehr 예약 시스템 >>\n\n");
     printf("[1] 사용자 정보 조회\n");
     printf("[2] 사용자 추가\n");
     printf("[3] 사용자 수정\n");

@@ -18,10 +18,9 @@ int main(void)
         washerList[i] = (Washer *)malloc(sizeof(Washer));
     }
 
+    system("clear"); // 프로그램 시작 시 terminal 화면을 clear 해준다.
     loadData(washerList);
     ListInit(head);
-
-    // system("clear"); // 프로그램 시작 시 terminal 화면을 clear 해준다.
     while (1)
     {
         int menu = choice_menu(); // 사용자로부터 menu 번호를 받는다.

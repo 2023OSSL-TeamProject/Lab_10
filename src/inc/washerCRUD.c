@@ -537,11 +537,9 @@ void saveData(Washer *washerList[])
 
     for (int i = 0; i < 16; i++)
     {
+        fprintf(fp[i], "학번      이름       세탁기 예약 시간\n");
         for (int j = 0; j < 16; j++)
         {
-            // char UserName[20]; // User 이름
-            // int UserNumber;    // User 학번
-            // int UserTime;      // 세탁기 사용 시간
 
             if (washerList[i]->washerData[j].UserNumber > 0)
             {
@@ -609,11 +607,12 @@ void loadData(Washer *washerList[])
         }
     }
     WasherData test;
+    char temp[100];
     int a = 0;
 
     for (int i = 0; i < 16; i++)
     {
-        printf("\n%d번째 파일입니다.\n", i + 1);
+        fgets(temp, 100, fp[i]);
         while (fscanf(fp[i], "%d", &test.UserNumber) == 1)
         {
             if (feof(fp[i]))
@@ -623,9 +622,7 @@ void loadData(Washer *washerList[])
                 fscanf(fp[i], "%s", test.UserName);
                 fscanf(fp[i], "%d", &test.UserTime);
             }
-            printf("%d\n", test.UserNumber);
-            printf("%s\n", test.UserName);
-            printf("%d\n", test.UserTime);
+
             for (int k = 0; k < 16; k++)
             {
 
@@ -634,73 +631,12 @@ void loadData(Washer *washerList[])
                     washerList[i]->washerData[k].UserNumber = test.UserNumber;
                     washerList[i]->washerData[k].UserTime = test.UserTime;
                     strcpy(washerList[i]->washerData[k].UserName, test.UserName);
-                    printf("\n");
-                    printf("Result : %d\n", washerList[i]->washerData[k].UserNumber);
-                    printf("Result : %s\n", washerList[i]->washerData[k].UserName);
-                    printf("Result : %d\n", washerList[i]->washerData[k].UserTime);
-                    printf("\n");
                     break;
-                    // printf("%s\n", test.UserName);
-                    // printf("%d\n", test.UserTime);
                 }
             }
         }
     }
-    // for (i = 0; i < 16; i++)
-    // {
-    //     printf("행 : %d\n", i + 1);
-    //     while (1)
-    //     {
-    //         if (feof(fp[i]) != 0)
-    //         {
-    //             fclose(fp[i]);
-    //             break;
-    //         }
-    //         else
-    //         {
-    //             printf("Yes!\n");
-    //             fscanf(fp[i], "%d", &test.UserNumber);
-    //             printf("%d\n", test.UserNumber);
-    //             fscanf(fp[i], "%s", test.UserName);
-    //             printf("%s\n", test.UserName);
-    //             fscanf(fp[i], "%d", &test.UserTime);
-    //             printf("%d\n", test.UserTime);
-    //         }
-    //     }
-    //     test.UserNumber = 0;
-    //     test.UserTime = 0;
-    //     strcpy(test.UserName, "");
-
-    //     // for (a = 0; a < 16; a++)
-    //     // {
-
-    //     // test[a].UserNumber = 0;
-    //     // test[a].UserTime = 0;
-    //     // strcpy(test[a].UserName, NULL);
-
-    //     // for (int k = 0; k < 16; k++)
-    //     // {
-
-    //     //     if (test.UserTime == k + 1)
-    //     //     {
-    //     //         washerList[i]->washerData[k].UserNumber = test.UserNumber;
-    //     //         washerList[i]->washerData[k].UserTime = test.UserTime;
-    //     //         strcpy(washerList[i]->washerData[k].UserName, test.UserName);
-    //     //     }
-
-    //     //     // fscanf(fp[i], "%d", &washerList[i]->washerData[k].UserNumber);
-    //     //     // if (feof(fp[i]))
-    //     //     // {
-    //     //     //     free(washerList[i]);
-    //     //     //     washerList[i - 1] = NULL;
-    //     //     //     break;
-    //     //     // }
-
-    //     //     // fscanf(fp[i], "%s", washerList[i]->washerData[k].UserName);
-    //     //     // fscanf(fp[i], "%d", &washerList[i]->washerData[k].UserTime);
-    //     // }
-    // }
     for (int z = 0; z < 16; z++)
         fclose(fp[z]);
-    printf("=> 로딩 성공!\n");
+    printf("=> 로딩 성공!\n\n");
 };
