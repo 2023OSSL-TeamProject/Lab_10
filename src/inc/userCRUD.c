@@ -216,16 +216,19 @@ void saveUserData(List *list) // head를 넘겨줘야 한다
 
     fp = fopen("./txt/userList.txt", "wt");
 
-    List *cur = list;
+    List *cur = list->link; // cur이 더미노드 다음을 가리키게 된다
     
     while(cur)
     {
-        fprintf(fp, "%d %s %d %d %d", cur->user.studentNum, cur->user.name, cur->user.money, cur->user.detergent, cur->user.fabricConditioner);
+        if(cur->user.studentNum != 0)
+        {
+            fprintf(fp, "%d %s %d %d %d\n", cur->user.studentNum, cur->user.name, cur->user.money, cur->user.detergent, cur->user.fabricConditioner);
+        }
         cur = cur->link;
     }
 
     fclose(fp);
-    printf("=> user 정보 저장 완료!");
+    printf("=> user 정보 저장 완료!\n");
 }
 
 void loadUserData(List *list)
@@ -245,5 +248,5 @@ void loadUserData(List *list)
     }
 
     fclose(fp);
-    printf("=> 로딩 성공!");
+    printf("=> user 정보 로딩 성공!\n");
 }

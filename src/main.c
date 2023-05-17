@@ -19,6 +19,7 @@ int main(void)
     }
 
     loadData(washerList);
+    loadUserData(head->link);
     ListInit(head);
 
     // system("clear"); // 프로그램 시작 시 terminal 화면을 clear 해준다.
@@ -59,6 +60,7 @@ int main(void)
         else if (menu == 5)
         {
             saveData(washerList);
+            saveUserData(head);
         }
         else if (menu == 6)
         {
