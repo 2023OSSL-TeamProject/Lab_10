@@ -234,10 +234,16 @@ void loadUserData(List *list)
 
     fp = fopen("./txt/userList.txt", "rt");
 
-    while(1)
+    while(feof(fp))
     {
         List *cur = malloc(sizeof(List));
 
         
+        fscanf(fp, "%d %s %d %d %d", &cur->user.studentNum, cur->user.name, &cur->user.money, &cur->user.detergent, &cur->user.fabricConditioner);
+        cur->link = list->link;
+        list->link = cur;
     }
+
+    fclose(fp);
+    printf("=> 로딩 성공!");
 }
