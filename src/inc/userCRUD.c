@@ -220,9 +220,13 @@ void saveUserData(List *list) // head를 넘겨줘야 한다
     
     while(cur)
     {
-        if(cur->user.studentNum != 0)
+        if(cur->user.studentNum != 0 && cur->link != NULL)
         {
             fprintf(fp, "%d %s %d %d %d\n", cur->user.studentNum, cur->user.name, cur->user.money, cur->user.detergent, cur->user.fabricConditioner);
+        }
+        else if(cur->user.studentNum != 0 && cur->link == NULL)
+        {
+            fprintf(fp, "%d %s %d %d %d", cur->user.studentNum, cur->user.name, cur->user.money, cur->user.detergent, cur->user.fabricConditioner);
         }
         cur = cur->link;
     }
@@ -240,8 +244,6 @@ void loadUserData(List *list)
     while(!feof(fp))
     {
         List *cur = malloc(sizeof(List));
-        printf("!!\n");
-
         
         fscanf(fp, "%d %s %d %d %d", &cur->user.studentNum, cur->user.name, &cur->user.money, &cur->user.detergent, &cur->user.fabricConditioner);
         cur->link = list->link->link;
