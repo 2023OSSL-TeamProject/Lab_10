@@ -58,6 +58,7 @@ int main(void)
         else if (menu == 5)
         {
             saveData(washerList);
+            saveUserData(head);
         }
         else if (menu == 6)
         {
