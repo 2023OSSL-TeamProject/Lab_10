@@ -1,3 +1,5 @@
 학번      이름       세탁기 예약 시간
 22000051 kimkwangil 11
 22000051 kimkwangil 13
+22000051 kimkwangil 17
+22000051 kimkwangil 22

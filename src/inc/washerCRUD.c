@@ -11,7 +11,7 @@ char washerInfo[2][20] = {"세탁기1", "세탁기2"};
 // 세탁기 선택 함수
 int ChoiceWasher()
 {
-    int dormitory = 0; // 기숙사
+    int dormitory = 0; //
     int floor = 0;     // 층
     int washer = 0;    // 세탁기
 
@@ -404,6 +404,7 @@ int WasherDelete(Washer *washerList[], List *list)
             printf("=> 삭제할 예약 번호를 입력하세요 : ");
             scanf("%d", &choiceNumber);
             println();
+            printf("Result : %d\n", count2);
             if (choiceNumber < count2 || choiceNumber > count2)
             {
                 printf("없는 번호입니다.\n");
