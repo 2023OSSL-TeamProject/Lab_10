@@ -21,6 +21,7 @@ int main(void)
     system("clear"); // 프로그램 시작 시 terminal 화면을 clear 해준다.
     ListInit(head);
     loadData(washerList);
+
     loadUserData(head);
     while (1)
     {
