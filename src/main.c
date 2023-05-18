@@ -19,8 +19,8 @@ int main(void)
     }
 
     loadData(washerList);
-    loadUserData(head->link);
     ListInit(head);
+    loadUserData(head);
 
     // system("clear"); // 프로그램 시작 시 terminal 화면을 clear 해준다.
     while (1)
