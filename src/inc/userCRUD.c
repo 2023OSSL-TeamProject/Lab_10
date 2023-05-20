@@ -23,7 +23,7 @@ void ListInsert(List *list)
 
         printf("사용자의 학번을 입력하세요 (종료 : 0) => ");
         scanf("%d", &num);
-        if (num == 0)
+        if (num == 0) // 학번을 입력받고 그에 따른 motion
         {
             system("clear");
             println();
@@ -31,7 +31,7 @@ void ListInsert(List *list)
             println();
             return;
         }
-        if (num < 10000000 || num >= 100000000)
+        if (num < 10000000 || num >= 100000000) // 학번의 범위 수 제한
         {
             printf("\n");
             printf("=> 학번은 총 8글자로 입력해주셔야 합니다.\n");
@@ -43,7 +43,7 @@ void ListInsert(List *list)
         }
     }
 
-    check = IntListFind(list, num);
+    check = IntListFind(list, num); // list에 존재하는지 여부 판단
 
     if (check == 1)
     {
@@ -56,7 +56,7 @@ void ListInsert(List *list)
     else
     {
         char temp[20];
-        printf("사용자의 이름을 입력하세요 (종료 : 0) => ");
+        printf("사용자의 이름을 입력하세요 (종료 : 0) => "); // 존재하지 않을 시에 이름 입력받기
         scanf("%s", temp);
         if (strcmp(temp, "0") == 0)
         {
@@ -69,7 +69,7 @@ void ListInsert(List *list)
 
         List *tp = malloc(sizeof(List));
 
-        tp->user.money = 0;
+        tp->user.money = 0; // 새로 할당해주고 초기화 진행
         tp->user.detergent = 0;
         tp->user.fabricConditioner = 0;
 
