@@ -1,3 +1,4 @@
 /.vscode/
 .DS_Store
-test.txt
+참고.txt
+*.o
