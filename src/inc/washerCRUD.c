@@ -405,7 +405,7 @@ int WasherDelete(Washer *washerList[], List *list)
             scanf("%d", &choiceNumber);
             println();
             printf("Result : %d\n", count2);
-            if (choiceNumber < count2 || choiceNumber > count2)
+            if (choiceNumber < 1 || choiceNumber > count2)
             {
                 printf("없는 번호입니다.\n");
                 println();
