@@ -8,16 +8,14 @@
 char dormitoryInfo[2][20] = {"비전관", "벧엘관"};
 char floorInfo[4][20] = {"1층", "2층", "3층", "4층"};
 char washerInfo[2][20] = {"세탁기1", "세탁기2"};
+
 // 세탁기 선택 함수
 int ChoiceWasher()
 {
-    int dormitory = 0; //
-    int floor = 0;     // 층
-    int washer = 0;    // 세탁기
+    int dormitory = 0;
+    int floor = 0;
+    int washer = 0;
 
-    // 사용자로부터 기숙사, 층, 세탁기 정보 입력 받기 (예외처리까지)
-
-    // 초기값 세팅
     dormitory = -1;
     floor = -1;
     washer = -1;
@@ -190,6 +188,7 @@ int ChoiceWasher()
     return 0;
 }
 
+// 세탁기 시간표 출력 함수
 void WasherTimePrint(Washer *washList)
 {
 
@@ -237,6 +236,7 @@ void WasherTimePrint(Washer *washList)
     println();
 };
 
+// 세탁기 예약 함수
 int WasherInsert(Washer *washerList[], List *list)
 {
     int studentNumber = 0;
@@ -261,10 +261,14 @@ int WasherInsert(Washer *washerList[], List *list)
         List *tp = ListFind(list, studentNumber);
         system("clear");
         println();
+
+        // 출력 방법 1
         printf("%s님의 보유 현황\n", tp->user.name);
         printf("잔여 금액 : %d\n", tp->user.money);
         printf("잔여 세제 : %d\n", tp->user.detergent);
         printf("잔여 섬유 : %d\n", tp->user.fabricConditioner);
+
+        // 출력 방법 2
         // printf("%d번 학생의 잔여 금액은 %d원 입니다.\n", 1, tp->user.money);
         // printf("%d번 학생의 세제 보유량은 %d개 이고, 섬유유연제 보유량은 %d개 입니다.\n", 1, tp->user.detergent, tp->user.fabricConditioner);
 
@@ -381,6 +385,7 @@ int WasherInsert(Washer *washerList[], List *list)
     return 0;
 }
 
+// 세탁기 예약 삭제 함수
 int WasherDelete(Washer *washerList[], List *list)
 {
     int studentNumber = 0;
@@ -471,6 +476,8 @@ int WasherDelete(Washer *washerList[], List *list)
     }
     return 0;
 };
+
+// 세탁기 정보 검색 함수
 void searchWasher(int num)
 {
     switch (num + 1)
@@ -525,10 +532,8 @@ void searchWasher(int num)
         break;
     }
 }
-//
-//
-//
 
+// 세탁기 정보 저장 함수
 int saveData(Washer *washerList[])
 {
     FILE *fp[16];
@@ -592,6 +597,7 @@ int saveData(Washer *washerList[])
     return 1;
 };
 
+// 세탁기 정보 로드 함수
 void loadData(Washer *washerList[])
 {
     int count = 0, i = 0;

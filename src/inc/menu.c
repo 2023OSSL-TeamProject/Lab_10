@@ -1,6 +1,7 @@
 // CRUD를 제외한 나머지 메뉴 기능을 구현하는 파일입니다.
 #include <stdio.h>
 
+// 메뉴 선택 함수
 int choice_menu()
 {
 
