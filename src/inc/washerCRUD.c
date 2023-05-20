@@ -639,5 +639,5 @@ void loadData(Washer *washerList[])
     }
     for (int z = 0; z < 16; z++)
         fclose(fp[z]);
-    printf("=> 로딩 성공!\n\n");
+    printf("=> 로딩 성공!\n");
 };

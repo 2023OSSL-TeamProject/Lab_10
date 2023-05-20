@@ -17,16 +17,17 @@ int main(void)
     {
         washerList[i] = (Washer *)malloc(sizeof(Washer));
     }
-
     system("clear"); // 프로그램 시작 시 terminal 화면을 clear 해준다.
     ListInit(head);
     loadData(washerList);
-
     loadUserData(head);
+    printWasher();
+    system("clear"); // 프로그램 시작 시 terminal 화면을 clear 해준다.
+
     while (1)
     {
         int menu = choice_menu(); // 사용자로부터 menu 번호를 받는다.
-
+        system("clear");
         if (menu != 0)
         {
             println();
@@ -40,7 +41,6 @@ int main(void)
             println();
             break;
         }
-
         if (menu == 1)
         {
             ListPrint(head);
