@@ -246,6 +246,10 @@ void loadUserData(List *list)
         List *cur = malloc(sizeof(List));
 
         fscanf(fp, "%d %s %d %d %d", &cur->user.studentNum, cur->user.name, &cur->user.money, &cur->user.detergent, &cur->user.fabricConditioner);
+        if (cur->user.studentNum == 0)
+        {
+            break;
+        }
         cur->link = list->link->link;
         list->link->link = cur;
     }
