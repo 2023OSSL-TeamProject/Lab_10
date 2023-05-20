@@ -21,7 +21,7 @@ int main(void)
     ListInit(head);
     loadData(washerList);
     loadUserData(head);
-    printWasher();
+    // printWasher();
     system("clear"); // 프로그램 시작 시 terminal 화면을 clear 해준다.
 
     while (1)
@@ -47,20 +47,31 @@ int main(void)
         }
         else if (menu == 2)
         {
-            success_fail(ListInsert(head));
+            // success_fail(ListInsert(head));
+            ListInsert(head);
         }
         else if (menu == 3)
         {
-            success_fail(ListUpdate(head));
+            // success_fail(ListUpdate(head));
+            ListUpdate(head);
         }
         else if (menu == 4)
         {
-            success_fail(ListDelete(head));
+            // success_fail(ListDelete(head));
+            ListDelete(head);
         }
         else if (menu == 5)
         {
-            saveData(washerList);
-            saveUserData(head);
+            if ((saveData(washerList) == 1) && (saveUserData(head) == 1))
+            {
+                printf("=> 저장되었습니다!\n");
+                println();
+            }
+            else
+            {
+                printf("=> 저장되지 않았습니다.\n");
+                println();
+            }
         }
         else if (menu == 6)
         {

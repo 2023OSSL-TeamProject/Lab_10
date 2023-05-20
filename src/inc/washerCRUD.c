@@ -28,12 +28,16 @@ int ChoiceWasher()
     println();
     if (dormitory == 0)
     {
+        system("clear");
+        println();
         printf("종료되었습니다.\n");
         println();
         return 0;
     }
     else if (dormitory < 1 || dormitory > 2)
     {
+        system("clear");
+        println();
         printf("입력하신 기숙사는 없습니다.\n");
         println();
         return 0;
@@ -45,12 +49,16 @@ int ChoiceWasher()
     println();
     if (floor == 0)
     {
+        system("clear");
+        println();
         printf("종료되었습니다.\n");
         println();
         return 0;
     }
     else if (floor < 1 || floor > 4)
     {
+        system("clear");
+        println();
         printf("입력하신 층은 없습니다.\n");
         println();
         return 0;
@@ -62,18 +70,23 @@ int ChoiceWasher()
     println();
     if (washer == 0)
     {
+        system("clear");
+        println();
         printf("종료되었습니다.\n");
         println();
         return 0;
     }
     else if (washer < 1 || washer > 2)
     {
+        system("clear");
+        println();
         printf("입력하신 세탁기는 없습니다.\n");
         println();
         return 0;
     }
-
-    printf("세탁하신 세탁기 정보\n");
+    system("clear");
+    println();
+    printf("[ 선택하신 세탁기 정보 ]\n");
     printf("기숙사 : %s\n", dormitoryInfo[dormitory - 1]);
     printf("층 : %s\n", floorInfo[floor - 1]);
     printf("세탁기 : %s\n", washerInfo[washer - 1]);
@@ -237,6 +250,8 @@ int WasherInsert(Washer *washerList[], List *list)
     int check = IntListFind(list, studentNumber);
     if (check == 0)
     {
+        system("clear");
+        println();
         printf("등록되어 있지 않은 학번입니다.\n");
         println();
         return 0;
@@ -244,7 +259,9 @@ int WasherInsert(Washer *washerList[], List *list)
     else
     {
         List *tp = ListFind(list, studentNumber);
-
+        system("clear");
+        println();
+        printf("%s님의 보유 현황\n", tp->user.name);
         printf("잔여 금액 : %d\n", tp->user.money);
         printf("잔여 세제 : %d\n", tp->user.detergent);
         printf("잔여 섬유 : %d\n", tp->user.fabricConditioner);
@@ -281,18 +298,27 @@ int WasherInsert(Washer *washerList[], List *list)
             return 0;
         }
 
-        WasherTimePrint(washerList[index - 1]);
         while (1)
         {
             while (1)
             {
-                printf("=> 시간대를 입력하세요 (예시 : 18:00 ~ 19:00 -> 18) : ");
+                WasherTimePrint(washerList[index - 1]);
+                printf("=> 시간대를 입력하세요 (예시 : 18:00 ~ 19:00 -> 18) (취소 : 0) => ");
                 ChoiceTime = 0;
                 scanf("%d", &ChoiceTime);
                 println();
-
+                if (ChoiceTime == 0)
+                {
+                    system("clear");
+                    println();
+                    printf("등록이 취소되었습니다.\n");
+                    println();
+                    return 0;
+                }
                 if (ChoiceTime < 8 || ChoiceTime > 22)
                 {
+                    system("clear");
+                    println();
                     printf("이용할 수 없는 시간대입니다.\n");
                     printf("\n");
                     again = 0;
@@ -301,9 +327,11 @@ int WasherInsert(Washer *washerList[], List *list)
                     println();
                     if (again == 0)
                     {
+                        system("clear");
+                        println();
                         printf("세탁기 예약이 종료되었습니다.\n");
                         println();
-                        break;
+                        return 0;
                     }
                     else
                         continue;
@@ -316,6 +344,8 @@ int WasherInsert(Washer *washerList[], List *list)
 
             if (washerList[index - 1]->washerData[ChoiceTime - 8].UserTime == ChoiceTime)
             {
+                system("clear");
+                println();
                 printf("이미 예약되어 있는 시간대입니다.\n");
                 println();
                 again = 0;
@@ -324,9 +354,11 @@ int WasherInsert(Washer *washerList[], List *list)
                 println();
                 if (again == 0)
                 {
+                    system("clear");
+                    println();
                     printf("세탁기 예약이 종료되었습니다.\n");
                     println();
-                    break;
+                    return 0;
                 }
                 else
                     continue;
@@ -337,6 +369,10 @@ int WasherInsert(Washer *washerList[], List *list)
                 strcpy(washerList[index - 1]->washerData[ChoiceTime - 8].UserName, tp->user.name);
 
                 washerList[index - 1]->washerData[ChoiceTime - 8].UserTime = ChoiceTime;
+                system("clear");
+                println();
+                printf("세탁기 예약이 정상적으로 진행되었습니다.\n");
+                println();
                 break;
             }
         }
@@ -353,10 +389,10 @@ int WasherDelete(Washer *washerList[], List *list)
 
     printf("삭제하고자 하는 사용자의 학번을 입력해주세요 : ");
     scanf("%d", &studentNumber);
-    println();
     int check = IntListFind(list, studentNumber);
     if (check == 0)
     {
+        println();
         printf("등록되어 있지 않은 학번입니다.\n");
         println();
         return 0;
@@ -379,7 +415,6 @@ int WasherDelete(Washer *washerList[], List *list)
                 }
             }
         }
-        printf("\n");
 
         if (count != 0)
         {
@@ -396,17 +431,18 @@ int WasherDelete(Washer *washerList[], List *list)
                         count2++;
                         printf("%d  |", count2);
                         searchWasher(i);
-                        printf("| %d  | %s | %d\n", washerList[i]->washerData[j].UserTime, washerList[i]->washerData[j].UserName, washerList[i]->washerData[j].UserNumber);
+                        printf("|  %d  | %s | %d\n", washerList[i]->washerData[j].UserTime, washerList[i]->washerData[j].UserName, washerList[i]->washerData[j].UserNumber);
                     }
                 }
             }
-
+            println();
             printf("=> 삭제할 예약 번호를 입력하세요 : ");
             scanf("%d", &choiceNumber);
             println();
-            printf("Result : %d\n", count2);
             if (choiceNumber < 1 || choiceNumber > count2)
             {
+                system("clear");
+                println();
                 printf("없는 번호입니다.\n");
                 println();
                 return 0;
@@ -419,6 +455,8 @@ int WasherDelete(Washer *washerList[], List *list)
                 tp->user.fabricConditioner++;
                 tp->user.money += 1000;
 
+                system("clear");
+                println();
                 printf("삭제되었습니다.\n");
                 println();
                 return 1;
@@ -491,7 +529,7 @@ void searchWasher(int num)
 //
 //
 
-void saveData(Washer *washerList[])
+int saveData(Washer *washerList[])
 {
     FILE *fp[16];
     fp[0] = fopen("./txt/washer1.txt", "wt");
@@ -532,7 +570,7 @@ void saveData(Washer *washerList[])
         {
 
             printf("=> 파일 없음\n");
-            return;
+            return 0;
         }
     }
 
@@ -551,8 +589,7 @@ void saveData(Washer *washerList[])
     for (int z = 0; z < 16; z++)
         fclose(fp[z]);
 
-    printf("=> 저장됨!\n");
-    println();
+    return 1;
 };
 
 void loadData(Washer *washerList[])

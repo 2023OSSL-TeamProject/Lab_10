@@ -1,6 +1,7 @@
 // user에 대한 CRUD를 기능을 구현하는 파일입니다.
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "userCRUD.h"
 #include "otherFunc.h"
 
@@ -13,24 +14,59 @@ void ListInit(List *list)
     list->link = tp;
 }
 
-int ListInsert(List *list)
+void ListInsert(List *list)
 { // list에서 노드 추가 / 학번, 이름 input 받아야 한다 / 돈이랑 사용하는 세탁기는 나중에 다른 함수로 따로 구현
     int check, num;
 
-    printf("사용자의 학번을 입력하세요 > ");
-    scanf("%d", &num);
+    while (1)
+    {
+
+        printf("사용자의 학번을 입력하세요 (종료 : 0) => ");
+        scanf("%d", &num);
+        if (num == 0)
+        {
+            system("clear");
+            println();
+            printf("등록이 취소되었습니다.\n");
+            println();
+            return;
+        }
+        if (num < 10000000 || num >= 100000000)
+        {
+            printf("\n");
+            printf("=> 학번은 총 8글자로 입력해주셔야 합니다.\n");
+            println();
+        }
+        else
+        {
+            break;
+        }
+    }
 
     check = IntListFind(list, num);
 
     if (check == 1)
     {
+        system("clear");
         println();
         printf("이미 존재하는 사용자입니다. \n");
         println();
-        return 0;
+        return;
     }
     else
     {
+        char temp[20];
+        printf("사용자의 이름을 입력하세요 (종료 : 0) => ");
+        scanf("%s", temp);
+        if (strcmp(temp, "0") == 0)
+        {
+            system("clear");
+            println();
+            printf("등록이 취소되었습니다.\n");
+            println();
+            return;
+        }
+
         List *tp = malloc(sizeof(List));
 
         tp->user.money = 0;
@@ -38,19 +74,22 @@ int ListInsert(List *list)
         tp->user.fabricConditioner = 0;
 
         tp->user.studentNum = num; // 학번 입력
-        printf("사용자의 이름을 입력하세요 > ");
-        scanf("%s", tp->user.name);
+        strcpy(tp->user.name, temp);
 
         // Argument로 들어오는 list는 이 linked list의 head에 해당
         // 따라서 head가 가리키는 더미노드 뒤에 위치하게 하는 것이 합당
 
         tp->link = list->link->link; // 더미노드가 가리키는 노드를 의미
         list->link->link = tp;       // 더미노드가 새로운 노드를 가리키게 한다
+
+        system("clear");
         println();
-        return 1;
+        printf("=> 등록되었습니다!\n");
+        println();
+        return;
     }
 }
-int ListDelete(List *list)
+void ListDelete(List *list)
 {                                 // list에서 노드 삭제
     List *cur = list->link->link; // 더미노드를 가리킨다
     List *temp = list->link;      // head를 가리킨다
@@ -60,17 +99,24 @@ int ListDelete(List *list)
     {
         printf("삭제할 데이터가 없습니다.\n");
         println();
-        return 0;
+        return;
     }
     else
     {
-        printf("<<< User Information >>>\n");
         printf("\n");
         ListPrint(list);
 
         printf("삭제하고자 하는 학생의 학번을 입력하세요 > ");
         scanf("%d", &num);
         println();
+        if (num == 0)
+        {
+            system("clear");
+            println();
+            printf("삭제가 취소되었습니다.\n");
+            println();
+            return;
+        }
         while (cur)
         {
             if (cur->user.studentNum == num)
@@ -79,7 +125,7 @@ int ListDelete(List *list)
                 free(cur);
                 printf("%d 학번의 학생의 정보를 삭제하였습니다\n", num);
                 println();
-                return 1;
+                return;
             }
             else
             { // 원하는 학생이 아닌 경우
@@ -89,7 +135,7 @@ int ListDelete(List *list)
         }
         printf("%d 학번의 학생이 사용자 정보에 등록되어 있지 않습니다\n", num);
         println();
-        return 0;
+        return;
     }
 }
 void ListPrint(List *list)
@@ -100,12 +146,14 @@ void ListPrint(List *list)
     // printf("학번 : %d 이름 : %s\n", cur->link->user.studentNum, cur->link->user.name);
     if (list->link->link == NULL)
     {
+        system("clear");
+        println();
         printf("조회할 사용자 정보가 없습니다.\n");
         println();
     }
     else
     {
-
+        printf("[      등록된 유저 정보      ]\n\n");
         while (cur)
         {
             printf("학번 : %d 이름 : %s \n", cur->user.studentNum, cur->user.name);
@@ -131,11 +179,9 @@ void ListIsEmpty(List *list)
     }
 }
 
-int ListUpdate(List *list)
+void ListUpdate(List *list)
 { // user에 대한 정보 수정
 
-    printf("<<< User Information >>>\n");
-    printf("\n");
     ListPrint(list);
 
     int num;
@@ -145,13 +191,21 @@ int ListUpdate(List *list)
     {
         printf("수정할 데이터가 없습니다.\n");
         println();
-        return 0;
+        return;
     }
     else
     {
-        printf("정보를 수정하고자 하는 학생의 학번을 입력하세요 > ");
+        printf("정보를 수정하고자 하는 학생의 학번을 입력하세요 (종료 : 0)> ");
         scanf("%d", &num);
         println();
+        if (num == 0)
+        {
+            system("clear");
+            println();
+            printf("수정이 취소되었습니다.\n");
+            println();
+            return;
+        }
         while (cur)
         {
             if (cur->user.studentNum == num)
@@ -162,13 +216,13 @@ int ListUpdate(List *list)
                 printf("수정하고자 하는 이름을 입력하세요 > ");
                 scanf("%s", cur->user.name);
                 println();
-                return 1;
+                return;
             }
             cur = cur->link;
         }
         printf("%d 학번의 학생은 존재하지 않습니다.\n", num);
         println();
-        return 0;
+        return;
     }
 }
 
@@ -202,7 +256,6 @@ int IntListFind(List *list, int num)
     {
         if (cur->user.studentNum == num)
         {
-            printf("학번 : %d 이름 : %s\n", cur->user.studentNum, cur->user.name);
             return 1;
         }
         cur = cur->link;
@@ -210,7 +263,7 @@ int IntListFind(List *list, int num)
     return 0;
 }
 
-void saveUserData(List *list) // head를 넘겨줘야 한다
+int saveUserData(List *list) // head를 넘겨줘야 한다
 {
     FILE *fp;
 
@@ -232,7 +285,7 @@ void saveUserData(List *list) // head를 넘겨줘야 한다
     }
 
     fclose(fp);
-    printf("=> user 정보 저장 완료!\n");
+    return 1;
 }
 
 void loadUserData(List *list)

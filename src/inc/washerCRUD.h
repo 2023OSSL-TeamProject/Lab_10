@@ -22,7 +22,7 @@ int WasherInsert(Washer *washerList[], List *list);
 int WasherDelete(Washer *washerList[], List *list);
 void searchWasher(int num);
 
-void saveData(Washer *washerList[]);
+int saveData(Washer *washerList[]);
 void loadData(Washer *washerList[]);
 
 #endif

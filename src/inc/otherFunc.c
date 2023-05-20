@@ -7,37 +7,45 @@
 #include "washerCRUD.h"
 #include <unistd.h>
 
+// 함수 : 프로그램 출력 레이아웃을 위한 함수
 void println()
 {
-    printf("\n-------------------------------\n\n");
+    printf("\n-------------------------------------------------------\n\n");
 }
 
-void success_fail(int result)
-{
-    if (result == 1)
-    {
-        printf("작업 수행 성공\n");
-        println();
-    }
-    else if (result == 0)
-    {
-        printf("작업 수행 실패\n");
-        println();
-    }
-}
+// 함수 : 함수 성공 여부를 판단해주는 함수
+// void success_fail(int result)
+// {
+//     if (result == 1)
+//     {
+//         printf("작업 수행 성공\n");
+//         println();
+//     }
+//     else if (result == 0)
+//     {
+//         printf("작업 수행 실패\n");
+//         println();
+//     }
+// }
 
+// 함수 : 세탁기 이용을 위한 세탁 카드, 세제, 섬유유연제 조회 및 충전 함수.
 void washerShop(List *list)
 {
+    // 변수 선언
     int num, n = 1;
     int price;
     int check;
     List *tp;
 
+    // 사용자로부터 학번을 입력 받는 구문
     printf("본인의 학번을 입력하세요 > ");
     scanf("%d", &num);
     println();
     tp = ListFind(list, num); // 1이면 있고 0이면 없다
 
+    system("clear");
+    println();
+    // 입력받은 학번의 유무 판단 구문
     if (tp == NULL) // tp가 어떠한 값을 가리키지 않는 경우
     {
         printf("%d번 학생은 사용자로 등록 되어있지 않습니다. \n", num);
@@ -45,7 +53,7 @@ void washerShop(List *list)
     }
     else // tp가 어떠한 값을 가리키는 경우
     {
-
+        // 입력한 사용자의 정보 출력
         printf("학번 : %d 이름 : %s\n", tp->user.studentNum, tp->user.name);
         println();
 
@@ -61,7 +69,7 @@ void washerShop(List *list)
             fflush(stdin);
             scanf("%d", &n);
             println();
-
+            system("clear");
             if (n == 1)
             {
                 printf("%d번 학생의 잔여 금액은 %d원 입니다.\n", num, tp->user.money);
@@ -70,14 +78,23 @@ void washerShop(List *list)
             }
             else if (n == 2)
             {
-                printf("충전하고자 하는 금액을 입력하세요 > ");
+                printf("충전하고자 하는 금액을 입력하세요 (취소 : 0) => ");
                 scanf("%d", &price);
-
-                tp->user.money += price;
-                println();
-                printf("%d번 학생의 잔여 금액은 %d원 입니다.\n", num, tp->user.money);
-                printf("충전이 완료되었습니다. 감사합니다.\n");
-                println();
+                if (price == 0)
+                {
+                    system("clear");
+                    println();
+                    printf("충전을 취소합니다.\n");
+                    println();
+                }
+                else
+                {
+                    tp->user.money += price;
+                    println();
+                    printf("%d번 학생의 잔여 금액은 %d원 입니다.\n", num, tp->user.money);
+                    printf("충전이 완료되었습니다. 감사합니다.\n");
+                    println();
+                }
             }
             else if (n == 3)
             {
@@ -93,11 +110,15 @@ void washerShop(List *list)
                         if (tp->user.money >= 0)
                         {
                             tp->user.detergent++;
+                            system("clear");
+                            println();
                             printf("구매가 완료되었습니다. 감사합니다.\n");
                             println();
                         }
                         else
                         {
+                            system("clear");
+                            println();
                             printf("잔액 부족입니다.\n");
                             println();
                             tp->user.money += 500;
@@ -106,6 +127,8 @@ void washerShop(List *list)
                     }
                     else if (check == 2)
                     {
+                        system("clear");
+                        println();
                         printf("세제 구매를 종료합니다.\n");
                         println();
                         break;
@@ -131,12 +154,16 @@ void washerShop(List *list)
                         if (tp->user.money >= 0)
                         {
                             tp->user.fabricConditioner++;
+                            system("clear");
+                            println();
                             printf("구매가 완료되었습니다. 감사합니다.\n");
                             println();
                         }
 
                         else
                         {
+                            system("clear");
+                            println();
                             printf("잔액 부족입니다.\n");
                             tp->user.money += 500;
                             println();
@@ -145,6 +172,8 @@ void washerShop(List *list)
                     }
                     else if (check == 2)
                     {
+                        system("clear");
+                        println();
                         printf("섬유유연제 구매를 종료합니다.\n");
                         println();
                         break;
@@ -158,13 +187,15 @@ void washerShop(List *list)
             }
             else if (n == 0)
             {
-                printf("프로그램을 종료합니다.\n");
+                println();
+                printf("세탁기 SHOP을 종료합니다.\n");
                 println();
 
                 break;
             }
             else
             {
+                println();
                 printf("잘못된 번호입니다. 다시 입력하세요\n");
                 println();
             }
@@ -172,6 +203,7 @@ void washerShop(List *list)
     }
 }
 
+// 프로그램 실행시 프로그램 로고를 출력해주는 함수
 void printWasher()
 {
     char str1[14][200] = {
@@ -189,6 +221,7 @@ void printWasher()
         {"\n"},
         {"\n"}};
 
+    // 방법 1 : 한 줄씩 출력하는 방법
     // for (int i = 0; i < 14; i++)
     // {
     //     for (int j = 0; j < strlen(str1[i]); j++)
@@ -200,6 +233,7 @@ void printWasher()
     // }
     // sleep(2);
 
+    // 방법 2 : 글자 하나씩 출력하는 방법
     for (int i = 0; i < 14; i++)
     {
         int length = strlen(str1[i]);
@@ -207,23 +241,10 @@ void printWasher()
         {
 
             printf("%c", str1[i][j]);
-            fflush(stdout); // 한글자 출력 후 출력버퍼를 비워야한다.
-            usleep(2000);   // 0.2초
+            fflush(stdout);
+            usleep(2000);
         }
     }
     printf("환영합니다. H-Washer입니다!\n\n");
     sleep(3);
-    // printf("\n");
-    // printf("________________________________________________________________________________________________________________\n");
-    // printf("________________________________________________________________________________________________________________\n");
-    // printf(" _     _          __        __        __      __         ________      _     _     _______    _______\n");
-    // printf("| |   | |         \\ \\      /  \\      / /     /  \\       / _______|    | |   | |   |  _____|  |  ___  |\n");
-    // printf("| |___| |   ____   \\ \\    / /\\ \\    / /     / /\\ \\     | /_______     | |___| |   | |_____   | |__/  /\n");
-    // printf("|  ___  |  |____|   \\ \\  / /  \\ \\  / /     / /__\\ \\     \\_______ \\    |  ___  |   |  _____|  |  __  /\n");
-    // printf("| |   | |            \\ \\/ /    \\ \\/ /     / /    \\ \\    ________ |    | |   | |   | |_____   | |  \\ \\\n");
-    // printf("|_|   |_|             \\__/      \\__/     /_/      \\_\\  |________/     |_|   |_|   |_______|  |_|   \\_\\\n");
-    // printf("________________________________________________________________________________________________________________\n");
-    // printf("________________________________________________________________________________________________________________\n");
-    // printf("\n");
-    // printf("\n");
 }

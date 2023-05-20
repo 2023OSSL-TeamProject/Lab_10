@@ -20,18 +20,18 @@ typedef struct _list
 } List;
 
 void ListInit(List *list);                   // list의 초기화를 담당한다
-int ListInsert(List *list);                  // list에서 노드 추가
-int ListDelete(List *list);                  // list에서 노드 삭제
+void ListInsert(List *list);                 // list에서 노드 추가
+void ListDelete(List *list);                 // list에서 노드 삭제
 void ListPrint(List *list);                  // list print
 void ListIsEmpty(List *list);                // list가 비어있는지 확인
-int ListUpdate(List *list);                  // user에 대한 정보 수정
+void ListUpdate(List *list);                 // user에 대한 정보 수정
 struct _list *ListFind(List *list, int num); // 원하는 user 탐색
 
 void washerShop(List *list);
 
 int IntListFind(List *list, int num);
 
-void saveUserData(List *list);
+int saveUserData(List *list);
 void loadUserData(List *list);
 
 #endif
