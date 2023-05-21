@@ -63,8 +63,8 @@
     <td style = "width : 50vw; "><b>👥 김동규 👥</b></td>
 </tr>
 <tr>
-    <td style = "width : 50vw; height : 100%">Owner<br>README.md 제작<br>CRUD / 파일IO 구현<br>코드 관리(수정)<br>github 관리</td>
-    <td style = "width : 50vw; height : 100%">Owner<br>github WIKI page 제작<br>부가 기능 구현<br>코드 관리(수정)<br> 프로젝트 관리</td>
+    <td style = "width : 50vw; height : 100%">Owner<br>README.md 제작<br>세탁기CRUD / 파일IO 구현<br>코드 관리(수정)<br>github 관리</td>
+    <td style = "width : 50vw; height : 100%">Owner<br>github WIKI page 제작<br>사용자CRUD / 부가 기능 구현(washer shop)<br>코드 관리(수정)<br> 프로젝트 관리</td>
 </tr>
 </table>
 <br>
