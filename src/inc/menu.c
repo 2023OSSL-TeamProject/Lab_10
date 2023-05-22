@@ -8,7 +8,7 @@ int choice_menu()
     int menu = 0; // 사용자로부터 입력 받을 '메뉴 번호'
 
     // 출력 구문
-    printf("<< H-Wasehr 예약 시스템 >>\n\n");
+    printf("<< H-Washer 예약 시스템 >>\n\n");
     printf("[1] 사용자 정보 조회\n");
     printf("[2] 사용자 추가\n");
     printf("[3] 사용자 수정\n");
